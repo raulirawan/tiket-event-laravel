@@ -1,22 +1,22 @@
 @extends('layouts.admin')
 
-@section('title','Create Data User')
+@section('title','Dashboard SuperAdmin')
     
 
 @section('content')
 
 <main>
     <div class="container-fluid">
-        <h1 class="mt-4">Hi, Dashboard</h1>
+        <h1 class="mt-4">Halaman Edit User</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item">User</li>
-            <li class="breadcrumb-item active">Create</li>
+            <li class="breadcrumb-item active">Edit</li>
         </ol>
     
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table mr-1"></i>
-                Form Tambah Data User
+                Form Edit Data User
             </div>
             <div class="card-body">
                <div class="row">
@@ -30,35 +30,31 @@
                             </ul>
                         </div>
                         @endif
-                       <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
+                       <form action="{{ route('user.update', $item->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                            <div class="row">
                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Nama Lengkap</label>
-                                        <input type="text" name="name" class="form-control" value="{{ old('name') }}" placeholder="Masukan Lengkap">
+                                        <input type="text" name="name" class="form-control" value="{{ $item->name }}" placeholder="Masukan Lengkap">
                                      </div>
                                 
                                </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Email</label>
-                                        <input type="email" name="email" class="form-control" value="{{ old('email') }}" placeholder="Masukan Email">
+                                        <input type="email" name="email" class="form-control" value="{{ $item->email }}" placeholder="Masukan Email">
                                      </div>
                                </div>
                            </div>
                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Password</label>
-                                        <input type="password" name="password" class="form-control" placeholder="Masukan Password">
-                                </div>
                             
-                               </div>
-                               <div class="col-md-6">
+                               <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Roles</label>
                                         <select name="roles" class="form-control">
+                                            <option value="{{ $item->roles }}" selected>Tidak di Ganti</option>
                                             <option value="USER">USER</option>
                                             <option value="ADMIN">ADMIN</option>
                                             <option value="SUPER">SUPERADMIN</option>
@@ -69,14 +65,14 @@
 
                             <div class="form-group">
                                 <label>Address</label>
-                                <textarea name="address" cols="1" rows="5" class="form-control" value="{{ old('address') }}" placeholder="Masukan Alamat"></textarea>
+                                <textarea name="address" cols="1" rows="5" class="form-control" placeholder="Masukan Alamat">{{ $item->address }}</textarea>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Provinsi</label>
                                         <select class="form-control" name="province_id" id="provinces">
-                                            <option value="" disable="true" selected="true">=== Pilih Provinsi ===</option>
+                                            <option value="{{ $item->province_id }}" disable="true" selected="true">=== Tidak Ganti Provinsi ===</option>
                                             @foreach ($provinces as $provincy)
                                                 <option value="{{$provincy->id}}">{{ $provincy->name }}</option>
                                             @endforeach
@@ -87,7 +83,7 @@
                                     <div class="form-group">
                                         <label>Kota</label>
                                         <select class="form-control" name="regency_id" id="regencies">
-                                            <option value="" disable="true" selected="true">=== Pilih Kota ===</option>
+                                            <option value="{{ $item->regency_id }}" disable="true" selected="true">=== Tidak Ganti Kota ===</option>
                                         </select>
                                     </div>
                                 </div>
@@ -97,7 +93,7 @@
                                     <div class="form-group">
                                         <label>Kecamatan</label>
                                         <select class="form-control" name="district_id" id="districts">
-                                            <option value="" disable="true" selected="true">=== Pilih Kecamatan ===</option>
+                                            <option value="{{ $item->district_id }}" disable="true" selected="true">=== Tidak Ganti Kecamatan ===</option>
                                         </select>
                                     </div>
                                 </div>
@@ -105,7 +101,7 @@
                                     <div class="form-group">
                                         <label>Kelurahan</label>
                                         <select class="form-control" name="village_id" id="villages">
-                                            <option value="" disable="true" selected="true">=== Pilih Kelurahan</option>
+                                            <option value="{{ $item->village_id }}" disable="true" selected="true">=== Tidak Ganti Kelurahan</option>
                                         </select>
                                     </div>
                                 </div>
@@ -114,13 +110,13 @@
                                 <div class="col-md-6">
                                      <div class="form-group">
                                         <label>Kode Pos</label>
-                                        <input type="number" name="zip_code" class="form-control" value="{{ old('zip_code') }}" placeholder="Masukan Kode Pos">
+                                        <input type="number" name="zip_code" class="form-control" value="{{ $item->zip_code }}" placeholder="Masukan Kode Pos">
                                      </div>
                                 </div>
                                 <div class="col-md-6">
                                      <div class="form-group">
                                         <label>Nomor HP</label>
-                                        <input type="number" name="mobile_number" class="form-control" value="{{ old('mobile_number') }}" placeholder="Masukan Nomor Handphone">
+                                        <input type="number" name="mobile_number" class="form-control" value="{{ $item->mobile_number }}" placeholder="Masukan Nomor Handphone">
                                      </div>
                                 </div>
                             </div>
@@ -131,31 +127,31 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="position" value="Wirausaha">
+                                                    <input class="form-check-input" type="radio" name="position" value="Wirausaha" {{ $item->position == 'Wirausaha' ? 'checked' : ''}}>
                                                     <label class="form-check-label">
                                                         Wirausaha
                                                     </label>    
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="position" value="Karyawan Negeri">
+                                                    <input class="form-check-input" type="radio" name="position" value="Karyawan Negeri" {{ $item->position == 'Karyawan Negeri' ? 'checked' : ''}}>
                                                     <label class="form-check-label">
                                                         Karyawan Negeri
                                                     </label>    
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="position" value="Karyawan Swasta">
+                                                    <input class="form-check-input" type="radio" name="position" value="Karyawan Swasta" {{ $item->position == 'Karyawan Swasta' ? 'checked' : ''}}>
                                                     <label class="form-check-label">
                                                         Karyawan Swasta
                                                     </label>    
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="position" value="Buruh">
+                                                    <input class="form-check-input" type="radio" name="position" value="Buruh" {{ $item->position == 'Buruh' ? 'checked' : ''}}>
                                                     <label class="form-check-label">
                                                         Buruh
                                                     </label>    
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="position" value="Pelajar">
+                                                    <input class="form-check-input" type="radio" name="position" value="Pelajar" {{ $item->position == 'Pelajar' ? 'checked' : ''}}>
                                                     <label class="form-check-label">
                                                        Pelajar / Mahasiswa
                                                     </label>    
@@ -190,13 +186,13 @@
         $.get('/regencies?province_id=' + province_id, function (data) {
             console.log(data);
             $('#regencies').empty();
-            $('#regencies').append('<option value="0" disable="true" selected="true">=== Pilih Kota ===</option>');
+            $('#regencies').append('<option value="" disable="true" selected="true">=== Pilih Kota ===</option>');
 
             $('#districts').empty();
-            $('#districts').append('<option value="0" disable="true" selected="true">=== Pilih Kecamatan ===</option>');
+            $('#districts').append('<option value="" disable="true" selected="true">=== Pilih Kecamatan ===</option>');
 
             $('#villages').empty();
-            $('#villages').append('<option value="0" disable="true" selected="true">=== Pilih Kelurahan</option>');
+            $('#villages').append('<option value="" disable="true" selected="true">=== Pilih Kelurahan</option>');
 
             $.each(data, function (index, regenciesObj) {
                 $('#regencies').append('<option value="' + regenciesObj.id + '">' + regenciesObj.name + '</option>');
@@ -210,7 +206,7 @@
         $.get('/districts?regencies_id=' + regencies_id, function (data) {
             console.log(data);
             $('#districts').empty();
-            $('#districts').append('<option value="0" disable="true" selected="true">=== Pilih Kecamatan ===</option>');
+            $('#districts').append('<option value="" disable="true" selected="true">=== Pilih Kecamatan ===</option>');
 
             $.each(data, function (index, districtsObj) {
                 $('#districts').append('<option value="' + districtsObj.id + '">' + districtsObj.name + '</option>');
@@ -224,7 +220,7 @@
         $.get('/village?districts_id=' + districts_id, function (data) {
             console.log(data);
             $('#villages').empty();
-            $('#villages').append('<option value="0" disable="true" selected="true">=== Pilih Kelurahan</option>');
+            $('#villages').append('<option value="" disable="true" selected="true">=== Pilih Kelurahan</option>');
 
             $.each(data, function (index, villagesObj) {
                 $('#villages').append('<option value="' + villagesObj.id + '">' + villagesObj.name + '</option>');
@@ -233,6 +229,7 @@
         });
     });
 
+    
     
 
 </script>

@@ -22,7 +22,15 @@ $factory->define(User::class, function (Faker $faker) {
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
-        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+        'password' => bcrypt('123'), // password
         'remember_token' => Str::random(10),
+        'address' => $faker->address,
+        'province_id' => 31,
+        'regency_id' => 3173,
+        'district_id' => 3173040,
+        'village_id' =>  3173040003,
+        'zip_code' => mt_rand(00000,99999),
+        'position'=> $faker->randomElement(['Wirausaha','Karyawan Negeri','Karyawan Swasta','Buruh' ,'Pelajar']),
+        'mobile_number' => $faker->phoneNumber,
     ];
 });

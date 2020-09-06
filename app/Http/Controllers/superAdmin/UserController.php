@@ -78,7 +78,6 @@ class UserController extends Controller
        $data = $request->all();
 
        $data['password'] = bcrypt($request->password);
-       $data['code'] = Str::random(10);
 
        $result = User::create($data);
 
@@ -100,7 +99,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $item = User::findOrFail($id);
+
+        return view('pages.superadmin.user.show', compact('item'));
     }
 
     /**
@@ -111,7 +112,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        
+        $provinces = Province::where('name', "DKI JAKARTA")->get();
+        $item = User::findOrFail($id);
+
+        return view('pages.superadmin.user.edit', compact('item','provinces'));
     }
 
     /**
@@ -123,7 +128,36 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|string|max:30',
+            'email' => 'unique:users,email,'. $id,
+            'roles' => 'nullable|string|in:SUPERADMIN,ADMIN,USER',
+            'address' => 'required|string',
+            'province_id' => 'required',
+            'regency_id' => 'required',
+            'district_id' => 'required',
+            'village_id' => 'required',
+            'zip_code' => 'required|integer|min:5',
+            'mobile_number' => 'required|max:14',
+            'position' => 'required',
+        ]);
+
+        $data = $request->all();
+
+        $item = User::findOrFail($id);
+
+        $result = $item->update($data);
+
+        if($result){
+           Alert::success('Berhasil', 'Data Berhasil di Update !');
+        }
+        else{
+            Alert::error('Gagal', 'Data Gagal di Update !');
+        }
+
+        return redirect()->route('user.index');    
+
+
     }
 
     /**
@@ -134,6 +168,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = User::findOrFail($id);
+
+        $item->delete();
+
+        return redirect()->route('user.index');
     }
 }

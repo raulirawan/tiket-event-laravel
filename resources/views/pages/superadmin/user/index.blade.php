@@ -1,6 +1,6 @@
     @extends('layouts.admin')
 
-    @section('title','Dashboard Admin')
+    @section('title','Dashboard SuperAdmin')
         
 
     @section('content')
@@ -28,7 +28,6 @@
                                     <th>Nama</th>
                                     <th>Email</th>
                                     <th>Roles</th>
-                                    <th>Kode Unik</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -63,7 +62,6 @@
                     { data: 'name' , name:  'name' },
                     { data: 'email' , name:  'email' },
                     { data: 'roles' , name:  'roles' },
-                    { data: 'code' , name:  'code' },
                     {
                         data: 'action',
                         name: 'action',

@@ -24,7 +24,7 @@ Route::get('/village', 'CountryController@villages');
 Route::prefix('superadmin')
         ->namespace('superAdmin')
         ->group(function(){
-            Route::get('/','DashboardController@index');
+            Route::get('/','DashboardController@index')->name('dashboard.superadmin');
             Route::resource('/user', 'UserController');
            
         }); 

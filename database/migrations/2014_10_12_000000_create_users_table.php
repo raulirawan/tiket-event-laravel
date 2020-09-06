@@ -23,7 +23,6 @@ class CreateUsersTable extends Migration
 
             $table->string('roles')->default('USER'); //Superadmin //Admin Event //User
             $table->longText('address')->nullable();
-            $table->string('code')->nullable();
             $table->integer('province_id')->nullable();
             $table->integer('regency_id')->nullable();
             $table->integer('district_id')->nullable();
