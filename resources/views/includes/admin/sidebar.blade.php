@@ -11,6 +11,10 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-user-alt"></i></div>
                     User
                 </a>
+                <a class="nav-link" href="{{ route('category.index') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-user-alt"></i></div>
+                    Category
+                </a>
                 <a class="nav-link" href="index.html">
                     <div class="sb-nav-link-icon"><i class="fas fa-ticket-alt"></i></div>
                     Event
