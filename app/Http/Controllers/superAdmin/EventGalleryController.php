@@ -79,7 +79,7 @@ class EventGalleryController extends Controller
     {
        $data = $request->all();
 
-        $data['photos'] = $request->file('photos')->store('assets/product','public');
+       $data['photos'] = $request->file('photos')->store('assets/event','public');
     
        $result = EventGallery::create($data);
 
