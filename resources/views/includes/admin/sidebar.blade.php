@@ -19,9 +19,9 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-ticket-alt"></i></div>
                     Event
                 </a>
-                <a class="nav-link" href="#">
-                    <div class="sb-nav-link-icon"><i class="fas fa-wallet"></i></div>
-                    Transaction
+                <a class="nav-link" href="{{ route('event-gallery.index') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-images"></i></div>
+                    Event Gallery
                 </a>
                 {{-- <div class="sb-sidenav-menu-heading">Interface</div> --}}
                 {{-- <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">

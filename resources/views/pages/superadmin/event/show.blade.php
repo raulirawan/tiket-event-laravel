@@ -36,7 +36,7 @@
                           </tr>
                            <tr>
                               <th>Harga Event</th>
-                              <td>{{ $item->price }}</td>
+                              <td>Rp{{ number_format($item->price) }},00</td>
                           </tr>
                            <tr>
                               <th>Deskripsi Event</th>

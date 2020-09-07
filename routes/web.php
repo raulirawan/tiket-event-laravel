@@ -28,5 +28,6 @@ Route::prefix('superadmin')
             Route::resource('/user', 'UserController');
             Route::resource('/category', 'CategoryController');
             Route::resource('/event', 'EventController');
+            Route::resource('/event-gallery', 'EventGalleryController');
            
         }); 
