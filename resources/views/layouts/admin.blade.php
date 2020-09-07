@@ -12,6 +12,7 @@
         <link href="{{ url('backend/css/styles.css') }}" rel="stylesheet" />
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.css"/>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="{{ url('backend/css/jquery.datetimepicker.css') }}">
         @stack('down-style')
     </head>
     <body class="sb-nav-fixed">
@@ -30,6 +31,7 @@
         <script src="{{ url('backend/js/scripts.js') }}"></script>     
         <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="{{ url('backend/js/jquery.datetimepicker.full.js') }}"></script>
         @stack('down-script')
         @include('sweetalert::alert')
     </body>

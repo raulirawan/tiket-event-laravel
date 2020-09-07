@@ -27,5 +27,6 @@ Route::prefix('superadmin')
             Route::get('/','DashboardController@index')->name('dashboard.superadmin');
             Route::resource('/user', 'UserController');
             Route::resource('/category', 'CategoryController');
+            Route::resource('/event', 'EventController');
            
         }); 

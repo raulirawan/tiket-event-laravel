@@ -70,4 +70,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Village::class,'village_id','id');
     }
+
+    public function event()
+    {
+        return $this->hasMany(Events::class);
+    }
 }

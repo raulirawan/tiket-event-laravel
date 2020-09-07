@@ -21,7 +21,7 @@ class CreateEventUsersTable extends Migration
             $table->string('code')->nullable();
             $table->boolean('status_checkin');
 
-
+        
             $table->timestamps();
         });
     }

@@ -21,7 +21,7 @@ class CreateTransactionsTable extends Migration
             $table->string('code_transaction');
             $table->string('status'); // PENDING , UNPAID, PAID
 
-
+            $table->softDeletes();
             $table->timestamps();
         });
     }

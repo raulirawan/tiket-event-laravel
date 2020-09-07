@@ -15,11 +15,11 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-user-alt"></i></div>
                     Category
                 </a>
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{{ route('event.index') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-ticket-alt"></i></div>
                     Event
                 </a>
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="#">
                     <div class="sb-nav-link-icon"><i class="fas fa-wallet"></i></div>
                     Transaction
                 </a>

@@ -30,7 +30,7 @@
                               <th>Email</th>
                               <td>{{ $item->email }}</td>
                           </tr>
-                           <tr style="word-wrap:break-all; width:20px; max-width:20px;">
+                           <tr style="word-wrap:break-all; width:30000px; max-width:20px;">
                               <th>Alamat</th>
                               <td>{{ $item->address }}</td>
                           </tr>

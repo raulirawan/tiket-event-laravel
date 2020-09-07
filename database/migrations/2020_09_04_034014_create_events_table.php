@@ -18,13 +18,13 @@ class CreateEventsTable extends Migration
 
             $table->integer('user_id');
             $table->integer('category_id');
-            $table->integer('event_id');
             $table->string('name');
             $table->bigInteger('price');
             $table->longText('description');
             $table->dateTime('date_time');
+            $table->string('location');
 
-        
+            $table->softDeletes();
             $table->timestamps();
         });
     }

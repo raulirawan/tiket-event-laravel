@@ -16,4 +16,10 @@ class Category extends Model
     protected $hidden = [
        
     ];
+
+
+    public function event()
+    {
+        return $this->hasMany(Events::class);
+    }
 }

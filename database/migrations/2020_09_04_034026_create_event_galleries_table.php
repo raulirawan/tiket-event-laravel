@@ -21,7 +21,7 @@ class CreateEventGalleriesTable extends Migration
             $table->string('photos');
 
 
-
+            $table->softDeletes();
             $table->timestamps();
         });
     }
