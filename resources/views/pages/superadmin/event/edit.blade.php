@@ -78,16 +78,34 @@
                                         <textarea name="description" id="editor">{{ $item->description }}</textarea>
                                     </div>
                                </div>
-                               <div class="col-md-12">
+                               <div class="col-md-6">
                                    <div class="form-group">
                                        <label>Tanggal dan Waktu</label>
                                     <input type="text" id="date_time" name="date_time" class="form-control" value="{{ $item->date_time }}" readonly autocomplete="off">
                                    </div>
                                </div>
-                               <div class="col-md-12">
+                               <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Tipe Event</label>
+                                        <select name="event_type" class="form-control">
+                                            <option value="{{ $item->event_type }}">-- Tidak Ganti Tipe Event --</option>
+                                            <option value="FREE">FREE</option>
+                                            <option value="PREMIUM">PREMIUM</option>
+                                        </select>
+                                    </div>
+                               </div>
+                               <div class="col-md-6">
+                                   <div class="form-group">
+                                       <label>Lokasi Event</label>
+                                        <input type="text" name="location" class="form-control" value="{{ $item->location }}">
+                                       <span class="text-muted">Contoh : Jakarta barat, Jakarta Utara</span>
+                                </div>
+                               </div>
+                               <div class="col-md-6">
                                    <div class="form-group">
                                        <label>Lokasi</label>
-                                    <input type="text" name="location" class="form-control" value="{{ $item->location }}">
+                                       <input type="text" name="location_details" class="form-control" value="{{ $item->location_details }}">
+                                       <span class="text-muted">Contoh : Link iframe Google Maps</span>
                                    </div>
                                </div>
                            </div>

@@ -88,16 +88,54 @@ class EventController extends Controller
     {
        $data = $request->all();
 
-       $result = Events::create($data);
+       $data['slug'] = Str::slug($request->name);
 
-       if($result){
-           Alert::success('Berhasil', 'Data Berhasil di Simpan !');
-       }
-       else{
-           Alert::error('Gagal', 'Data Gagal di Simpan !');
-       }
+       if($request->event_type == "FREE"){
+           $data['price'] = 0;
 
-       return redirect()->route('event.index');
+           $result = Events::create($data);
+
+            if($result){
+                Alert::success('Berhasil', 'Data Berhasil di Simpan !');    
+            }
+            else{
+                Alert::error('Gagal', 'Data Gagal di Simpan!');  
+            }
+            return redirect()->route('event.index');
+
+        } else if ($request->event_type == "PREMIUM" && $request->price == 0) {
+            Alert::error('Gagal', 'Silahkan isi Harga Event');
+            return back();
+
+        } else {
+            $result = Events::create($data);
+
+            if($result){
+                Alert::success('Berhasil', 'Data Berhasil di Simpan !');    
+            }
+            else{
+                Alert::error('Gagal', 'Data Gagal di Simpan !');  
+            }
+            return redirect()->route('event.index');    
+        }
+
+    //    if($request->event_type == "FREE"){
+    //        $data['price'] = 0;
+    //    } 
+
+       
+
+    //    $result = Events::create($data);
+
+       
+    //    if($result){
+    //        Alert::success('Berhasil', 'Data Berhasil di Simpan !');
+    //    }
+    //    else{
+    //        Alert::error('Gagal', 'Data Gagal di Simpan !');
+    //    }
+
+    //    return redirect()->route('event.index');
     }
 
     /**
@@ -145,18 +183,34 @@ class EventController extends Controller
 
         $item = Events::findOrFail($id);
 
-        $result = $item->update($data);
+        if($request->event_type == "FREE"){
+           $data['price'] = 0;
 
-        if($result){
-           Alert::success('Berhasil', 'Data Berhasil di Update !');
+           $result = $item->update($data);
+
+            if($result){
+                Alert::success('Berhasil', 'Data Berhasil di Update !');    
+            }
+            else{
+                Alert::error('Gagal', 'Data Gagal di Update');  
+            }
+            return redirect()->route('event.index');
+
+        } else if ($request->event_type == "PREMIUM" && $request->price == 0) {
+            Alert::error('Gagal', 'Silahkan isi Harga Event');
+            return back();
+
+        } else {
+            $result = $item->update($data);
+
+            if($result){
+                Alert::success('Berhasil', 'Data Berhasil di Update !');    
+            }
+            else{
+                Alert::error('Gagal', 'Data Gagal di Update !');  
+            }
+            return redirect()->route('event.index');    
         }
-        else{
-            Alert::error('Gagal', 'Data Gagal di Update !');
-        }
-
-        return redirect()->route('event.index');    
-
-
     }
 
     /**

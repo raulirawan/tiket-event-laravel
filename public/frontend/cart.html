@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" id="home">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Evnt</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link href="style/main.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <nav
+      class="navbar navbar-expand-lg navbar-dark navbar-event fixed-top navbar-fixed-top"
+    >
+      <div class="container">
+        <a class="navbar-brand" href="#">Evnt</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Event</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Category</a>
+            </li>
+          </ul>
+
+          <!-- Desktop Menu -->
+          <ul class="navbar-nav d-none d-lg-flex">
+            <li class="nav-item dropdown mt-2">
+              <a
+                href="#"
+                class="nav-link dropdown-toggle"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+              >
+                <img
+                  src="/images/icon-user.png"
+                  alt=""
+                  class="rounded-circle mr-2 profile-picture"
+                />
+                Hi, Raul
+              </a>
+              <div class="dropdown-menu">
+                <a href="#" class="dropdown-item">Dashboard</a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item">Logout</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link d-inline-block mt-2">
+                <img src="/images/icon-cart-filled.svg" alt="" />
+                <div class="cart-badge">3</div>
+              </a>
+            </li>
+          </ul>
+          <!-- End Desktop Menu -->
+
+          <!-- Mobile Menu -->
+          <ul class="navbar-nav d-block d-lg-none">
+            <li class="nav-item">
+              <a href="#" class="nav-link"> Hi, Raul </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="#" class="nav-link d-inline-block"> Cart </a>
+            </li>
+          </ul>
+          <!-- End Mobile Menu -->
+        </div>
+      </div>
+    </nav>
+
+    <div class="page-content page-cart">
+      <section class="section-breadcrumbs">
+        <div class="container">
+          <div class="row" data-aos="fade-down" data-aos-duration="1000">
+            <div class="col-6">
+              <nav>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item">
+                    <a href="/index.html">Home</a>
+                  </li>
+
+                  <li class="breadcrumb-item active">Cart</li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-order-tiket">
+        <div class="container">
+          <div
+            class="row"
+            data-aos="fade-right"
+            data-aos-duration="1000"
+            data-aos-delay="200"
+          >
+            <div class="col-lg-8 col-12">
+              <h2
+                data-aos="fade-right"
+                data-aos-duration="1000"
+                data-aos-delay="100"
+              >
+                Ticket Order Summary
+              </h2>
+              <table class="table table-borderless table-responsive table-cart">
+                <thead>
+                  <tr>
+                    <td>Event</td>
+                    <td>Name Event</td>
+                    <td>Price</td>
+                    <td>Action</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="width: 20%">
+                      <img src="images/1.jpg" alt="" class="cart-image" />
+                    </td>
+                    <td style="width: 35%">
+                      <div class="event-title">Indonesia Food Diary</div>
+                      <div class="event-subtitle">By, PT. Indo Persada</div>
+                    </td>
+                    <td style="width: 35%">
+                      <div class="event-title">Rp200.000</div>
+                      <div class="event-subtitle">IDR</div>
+                    </td>
+                    <td style="width: 35%">
+                      <a href="#" class="btn btn-remove px-4">Remove</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width: 20%">
+                      <img src="images/3.jpg" alt="" class="cart-image" />
+                    </td>
+                    <td style="width: 35%">
+                      <div class="event-title">DWS x Younglex</div>
+                      <div class="event-subtitle">By, PT. Indo Persada</div>
+                    </td>
+                    <td style="width: 35%">
+                      <div class="event-title">Rp300.000</div>
+                      <div class="event-subtitle">IDR</div>
+                    </td>
+                    <td style="width: 35%">
+                      <a href="#" class="btn btn-remove px-4">Remove</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="col-lg-4 col-12">
+              <div class="card">
+                <div class="card-body">
+                  <h2 class="mb-4 text-center">Payment Info</h2>
+                  <div
+                    class="payment-information d-flex justify-content-between"
+                  >
+                    <div class="side-left text-muted">Your Name</div>
+                    <div class="side-right">Raul Irawan</div>
+                  </div>
+                  <div
+                    class="payment-information d-flex justify-content-between"
+                  >
+                    <div class="side-left text-muted">Your Email</div>
+                    <div class="side-right">raulirawan@gmail.com</div>
+                  </div>
+                  <div
+                    class="payment-information d-flex justify-content-between"
+                  >
+                    <div class="side-left text-muted">Mobile Number</div>
+                    <div class="side-right">087883496655</div>
+                  </div>
+                  <div class="border-bottom mb-4"></div>
+                  <div
+                    class="payment-information d-flex justify-content-between"
+                  >
+                    <div class="side-left text-muted">Total Price</div>
+                    <div class="side-right">Rp500.000</div>
+                  </div>
+
+                  <a href="/success.html" class="btn btn-checkout d-block mt-4"
+                    >Checkout Now</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <div class="container">
+        <hr />
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <div class="row">
+              <div class="col-12 col-lg-3 align-self-center name-footer">
+                <a href="#" class="logo-event">Evnt</a>
+              </div>
+              <div class="col-12 col-lg-3 name-footer">
+                <h4 class="mb-3">Event</h4>
+                <ul class="list-unstyled">
+                  <li>
+                    <a href=""> Join Us </a>
+                  </li>
+                  <li>
+                    <a href=""> Category </a>
+                  </li>
+                  <li>
+                    <a href=""> Features </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-12 col-lg-3 name-footer">
+                <h4 class="mb-3">Support</h4>
+                <ul class="list-unstyled">
+                  <li>
+                    <a href=""> Check Ticket </a>
+                  </li>
+                  <li>
+                    <a href=""> How to buy tickets </a>
+                  </li>
+                  <li>
+                    <a href=""> Become an owner </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-12 col-lg-3 name-footer">
+                <h4 class="mb-3">Contact Us</h4>
+                <ul class="list-unstyled">
+                  <li>
+                    <a href=""> +62 878-8349-6655 </a>
+                  </li>
+                  <li>
+                    <a href=""> event@gmail.com </a>
+                  </li>
+                  <li>
+                    <a href=""> Jakarta Barat, Indonesia </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 text-center">
+          <div class="line"></div>
+          <p>Copyright © 2020 Evnt.com. All rights reversed</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="scripts/main.js"></script>
+  </body>
+</html>

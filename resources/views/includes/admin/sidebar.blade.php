@@ -3,7 +3,7 @@
         <div class="sb-sidenav-menu">
             <div class="nav">
                 <div class="sb-sidenav-menu-heading">Data</div>
-                <a class="nav-link active" href="{{ route('dashboard.superadmin') }}">
+                <a class="nav-link" href="{{ route('dashboard.superadmin') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Dashboard
                 </a>
@@ -22,6 +22,10 @@
                 <a class="nav-link" href="{{ route('event-gallery.index') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-images"></i></div>
                     Event Gallery
+                </a>
+                 <a class="nav-link" href="{{ route('transaction.index') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-images"></i></div>
+                    Transaction
                 </a>
                 {{-- <div class="sb-sidenav-menu-heading">Interface</div> --}}
                 {{-- <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">

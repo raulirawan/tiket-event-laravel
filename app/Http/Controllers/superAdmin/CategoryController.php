@@ -9,8 +9,9 @@ use App\Models\District;
 use App\Models\Province;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Http\Requests\CategoryRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryRequest;
+use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -41,10 +42,12 @@ class CategoryController extends Controller
                         </div>
                     
                     ';
-                    
+                })
+                ->editColumn('photos', function($item) {
+                return $item->photos ? '<img src="'. Storage::url($item->photos) .'" style="max-height: 40px;" />' : '';
 
                 })
-                ->rawColumns(['action'])
+                ->rawColumns(['action','photos'])
                 ->make();
                 
         }
@@ -75,7 +78,9 @@ class CategoryController extends Controller
        $data = $request->all();
 
        $data['slug'] = Str::slug($request->name);
-        
+       $data['photos'] = $request->file('photos')->store('assets/category','public');
+
+        // dd($data);
        $result = Category::create($data);
 
        if($result){
@@ -84,6 +89,8 @@ class CategoryController extends Controller
        else{
            Alert::error('Gagal', 'Data Gagal di Simpan !');
        }
+
+       
 
        return redirect()->route('category.index');
     }
@@ -120,16 +127,27 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryRequest $request, $id)
-    {
+    public function update(Request $request, $id)
+    {   
+         $this->validate($request, [
+            'name' => 'required|string|max:30',
+        ]);
 
         $data = $request->all();
+
         $data['slug'] = Str::slug($request->name); 
 
+        if($request->photos){
+            $data['photos'] = $request->file('photos')->store('assets/category','public');
+
+        }
+
+
         $item = Category::findOrFail($id);
-    
+
         $result = $item->update($data);
 
+      
         if($result){
            Alert::success('Berhasil', 'Data Berhasil di Update !');
         }

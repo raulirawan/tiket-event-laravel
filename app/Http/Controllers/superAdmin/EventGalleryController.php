@@ -79,10 +79,19 @@ class EventGalleryController extends Controller
     {
        $data = $request->all();
 
-       $data['photos'] = $request->file('photos')->store('assets/event','public');
-    
-       $result = EventGallery::create($data);
+       if($request->hasFile('photos')) {
+            $photos = $request->file('photos');
+            foreach($photos as $photo) {
+            
+            $data['photos'] = $photo->store('assets/event','public');
+            $result = EventGallery::create($data);
+        }
+            
+       }
 
+     
+
+       
        if($result){
            Alert::success('Berhasil', 'Data Berhasil di Simpan !');
        }

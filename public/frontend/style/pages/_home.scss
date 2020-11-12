@@ -1,0 +1,171 @@
+.page-home {
+  padding-top: 100px;
+
+  .section-hero {
+    padding-bottom: 70px;
+    background-color: #0c0435;
+
+    @include media-breakpoint-down(md) {
+      padding-top: 70px;
+      padding-bottom: 125px;
+    }
+
+    h5 {
+      font-family: "Euclid Bold", sans-serif;
+      font-size: 44px;
+      color: #fff;
+    }
+
+    p {
+      font-family: "Euclid Light", sans-serif;
+      font-size: 20px;
+      color: #fff;
+    }
+
+    .btn-getstarted {
+      font-family: "Euclid Bold", sans-serif;
+      color: #fff;
+      font-weight: bold;
+      @include button-variant(#7848f4, transparent);
+    }
+  }
+
+  .section-service {
+    background: #fff;
+    padding-top: 70px;
+    padding-bottom: 70px;
+
+    h5 {
+      font-family: "Euclid Bold";
+      font-size: 50px;
+      color: #0c0435;
+      padding-bottom: 70px;
+    }
+
+    .title {
+      h4 {
+        font-family: "Euclid Bold";
+        font-size: 30px;
+        color: #0c0435;
+      }
+    }
+
+    .description {
+      p {
+        font-family: "Euclid Light";
+        font-size: 20px;
+        color: #002841;
+      }
+    }
+  }
+
+  .section-category {
+    a {
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    background-color: #0c0435;
+    padding-top: 70px;
+    padding-bottom: 70px;
+    h5 {
+      font-family: "Euclid Bold";
+      font-size: 30px;
+      color: #fff;
+      margin-bottom: 80px;
+    }
+    .card {
+      border-radius: 8px;
+
+      h4 {
+        font-family: "Euclid Bold";
+        font-size: 22px;
+        color: #0c0435;
+      }
+      p {
+        font-family: "Euclid Light";
+        font-size: 12px;
+        color: #002841;
+        display: inline-flex;
+      }
+    }
+    .category {
+      margin-bottom: 20px;
+    }
+  }
+
+  .section-upcomingEvent {
+    background: #fff;
+    padding-top: 70px;
+    padding-bottom: 70px;
+
+    .card {
+      border-radius: 8px;
+      border: none;
+    }
+
+    h5 {
+      font-family: "Euclid Bold";
+      font-size: 30px;
+      color: #0c0435;
+      margin-bottom: 80px;
+    }
+
+    .upcoming-event {
+      margin-bottom: 25px;
+
+      .type-event{
+        background: #0c0435;
+        color: #FFF;
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        h4{
+           font-family: "Euclid Bold";
+           font-size: 12px;
+        }
+      }
+    }
+    
+
+    .title-event {
+      font-family: "Euclid Bold";
+      font-size: 18px;
+      color: #0c0435;
+    }
+
+    .location-event {
+      font-family: "Euclid";
+      font-size: 18px;
+      color: #aaa3a3;
+    }
+    .price-event {
+      font-family: "Euclid Bold";
+      font-size: 18px;
+      color: #ffad33;
+    }
+
+    .month {
+      font-family: "Euclid Bold";
+      font-size: 18px;
+      color: #aaa3a3;
+    }
+
+    .date {
+      text-align: center;
+      font-family: "Euclid Bold";
+      font-size: 24px;
+      color: #0c0435;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .btn-seemore {
+      color: #fff;
+      @include button-variant(#7848f4, transparent);
+    }
+  }
+}

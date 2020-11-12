@@ -1,0 +1,90 @@
+.page-details {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background: #fff;
+
+  .event-gallery {
+    margin-top: 20px;
+
+    img {
+      border-radius: 10px;
+    }
+    .thumbnail-image {
+      margin-bottom: 20px;
+      border: 2px solid transparent;
+
+      &:hover,
+      &.active {
+        border: 2px solid #ff7158;
+      }
+    }
+  }
+
+  .section-information {
+    .title-event {
+      h2 {
+        font-family: "Euclid Medium";
+        font-size: 32px;
+        color: #0c0435;
+      }
+    }
+
+    .owner-event {
+      font-family: "Euclid Light";
+      font-size: 20px;
+      color: #aaa3a3;
+    }
+
+    .price {
+      font-family: "Euclid Bold";
+      font-size: 20px;
+      color: #ffad33;
+    }
+
+    .description {
+      p {
+        font-family: "Euclid Light";
+        font-size: 18px;
+        color: #806e6e;
+      }
+    }
+
+    .event-information {
+      padding-top: 20px;
+    }
+
+    .card {
+      border-radius: 8px;
+      border: 0;
+      background-color: #fff;
+
+      h4 {
+        font-family: "Euclid Medium";
+        font-size: 25px;
+        color: #0c0435;
+      }
+      font-family: "Euclid";
+      .item-information {
+        margin-top: 10px;
+        color: #806e6e;
+        margin-bottom: 10px;
+      }
+
+      .btn-add {
+        color: #fff;
+        @include button-variant(#7848f4, transparent);
+      }
+    }
+  }
+
+  .section-location {
+    h2 {
+      @include media-breakpoint-down(md) {
+        padding-top: 25px;
+      }
+      font-family: "Euclid Medium";
+      font-size: 35px;
+      color: #0c0435;
+    }
+  }
+}

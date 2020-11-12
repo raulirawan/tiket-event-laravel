@@ -1,0 +1,82 @@
+.page-cart {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background: #ffffff;
+
+  .section-order-tiket {
+    h2 {
+      font-family: "Euclid Medium";
+      font-size: 32px;
+      color: #0c0435;
+    }
+    thead {
+      tr {
+        td {
+          font-family: "Euclid Medium";
+          color: #0c0435;
+        }
+      }
+    }
+    .table-cart {
+      margin-left: -15px;
+      margin-right: -15px;
+    }
+    .cart-image {
+      border-radius: 8px;
+      max-height: 100px;
+    }
+
+    .btn-remove {
+      margin-top: 20px;
+      color: #fff;
+      @include button-variant(#7848f4, transparent);
+    }
+
+    .event-title {
+      font-family: "Euclid Medium";
+      font-size: 16px;
+      margin-top: 20px;
+
+      color: #0c0435;
+    }
+
+    .event-subtitle {
+      font-family: "Euclid Light";
+      font-size: 12px;
+      color: #aaa3a3;
+    }
+
+    .total-price {
+      .text-total {
+        font-family: "Euclid Medium";
+        font-size: 25px;
+        color: #0c0435;
+      }
+
+      .text-price {
+        font-family: "Euclid Medium";
+        font-size: 25px;
+        color: #ffad33;
+      }
+    }
+    .btn-checkout {
+      color: #fff;
+      @include button-variant(#7848f4, transparent);
+    }
+
+    .payment-information {
+      margin-bottom: 1rem;
+
+      .side-right {
+        font-family: "Euclid Medium";
+        color: #0c0435;
+      }
+    }
+
+    .card {
+      border-radius: 8px;
+      border: 0;
+      background-color: #fcfcfc;
+    }
+  }
+}

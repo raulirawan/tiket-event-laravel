@@ -25,12 +25,13 @@
                     <table class="table table-hover scroll-horinzontal-vertical w-100" id="crudTable">
                         <thead>
                             <tr>
-                                <th>Nama</th>
-                                <th>Slug</th>
-                                <th>Aksi</th>
+                                <th style="font-size: 14px">Nama</th>
+                                <th style="font-size: 14px">Photo</th>
+                                <th style="font-size: 14px">Slug</th>
+                                <th style="font-size: 14px">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody style="font-size: 15px">
 
                         </tbody>
                     </table>
@@ -59,6 +60,7 @@
 
             columns: [
                 { data: 'name' , name:  'name' },
+                { data: 'photos' , name:  'photos' },
                 { data: 'slug' , name:  'slug' },
                 {
                     data: 'action',

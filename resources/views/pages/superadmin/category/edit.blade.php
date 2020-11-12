@@ -40,6 +40,11 @@
                                         <label>Nama Category</label>
                                         <input type="text" name="name" class="form-control" value="{{ $item->name }}" placeholder="Masukan Nama Category">
                                      </div>
+                                      <div class="form-group">
+                                        <label>Photo</label>
+                                        <input type="file" name="photos" class="form-control">
+                                        <span class="text-muted">Kosongkan jika tidak ingin ganti gambar</span>
+                                     </div>
                                 
                                </div>
                               

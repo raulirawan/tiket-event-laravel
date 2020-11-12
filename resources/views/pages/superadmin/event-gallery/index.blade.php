@@ -25,12 +25,12 @@
                     <table class="table table-hover scroll-horinzontal-vertical w-100" id="crudTable">
                         <thead>
                             <tr>
-                                <th>Nama Event</th>
-                                <th>Foto Event</th>
-                                <th>Action</th>
+                                <th style="font-size: 14px">Nama Event</th>
+                                <th style="font-size: 14px">Foto Event</th>
+                                <th style="font-size: 14px">Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody style="font-size: 15px">
 
                         </tbody>
                     </table>

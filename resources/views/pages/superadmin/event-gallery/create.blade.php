@@ -43,12 +43,11 @@
                                             @endforeach
                                         </select>
                                      </div>
-                                
                                </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Foto Event ( Thumbnails )</label>
-                                        <input type="file" name="photos" class="form-control">
+                                        <input type="file" name="photos[]" class="form-control" multiple="true">
                                      </div>
                                </div>
                            </div>

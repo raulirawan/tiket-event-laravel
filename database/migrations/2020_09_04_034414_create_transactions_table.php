@@ -17,7 +17,7 @@ class CreateTransactionsTable extends Migration
             $table->id();
             
             $table->integer('user_id');
-            $table->integer('total_price');
+            $table->bigInteger('total_price');
             $table->string('code_transaction');
             $table->string('status'); // PENDING , UNPAID, PAID
 

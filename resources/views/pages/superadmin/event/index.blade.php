@@ -25,15 +25,16 @@
                     <table class="table table-hover scroll-horinzontal-vertical w-100" id="crudTable">
                         <thead>
                             <tr>
-                                <th>Nama</th>
-                                <th>Pemilik Event</th>
-                                <th>Kategori Event</th>
-                                <th>Harga Event</th>
-                                <th>Tanggal Event</th>
-                                <th>Action</th>
+                                <th style="font-size: 14px">Nama Event</th>
+                                <th style="font-size: 14px">Pemilik Event</th>
+                                <th style="font-size: 14px">Kategori Event</th>
+                                <th style="font-size: 14px">Harga Event</th>
+                                <th style="font-size: 14px">Tanggal Event</th>
+                                <th style="font-size: 14px">Tipe Event</th>
+                                <th style="font-size: 14px">Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody style="font-size: 15px">
 
                         </tbody>
                     </table>
@@ -66,6 +67,7 @@
                 { data: 'category.name' , name:  'category.name' },
                 { data: 'price' , name:  'price' },
                 { data: 'date_time' , name: 'date_time' },
+                { data: 'event_type' , name: 'event_type' },
                
 
                 {

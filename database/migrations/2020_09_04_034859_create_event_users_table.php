@@ -18,6 +18,7 @@ class CreateEventUsersTable extends Migration
 
             $table->integer('event_id');
             $table->integer('user_id');
+            
             $table->string('code')->nullable();
             $table->boolean('status_checkin');
 

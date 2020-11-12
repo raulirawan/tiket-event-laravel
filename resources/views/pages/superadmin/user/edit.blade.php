@@ -156,10 +156,6 @@
                                                        Pelajar / Mahasiswa
                                                     </label>    
                                                 </div>
-                                                
-                                              
-                                              
-                                               
                                             </div>
                                         </div>
                                     </div>

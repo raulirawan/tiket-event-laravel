@@ -19,10 +19,13 @@ class CreateEventsTable extends Migration
             $table->integer('user_id');
             $table->integer('category_id');
             $table->string('name');
+            $table->string('slug');
             $table->bigInteger('price');
             $table->longText('description');
             $table->dateTime('date_time');
+            $table->string('event_type'); //PREMIUM and FREE
             $table->string('location');
+            $table->string('location_details'); //location google map
 
             $table->softDeletes();
             $table->timestamps();

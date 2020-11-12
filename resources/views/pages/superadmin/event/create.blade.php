@@ -68,25 +68,52 @@
                                     <div class="form-group">
                                         <label>Harga Event</label>
                                         <input type="number" name="price" class="form-control" value="{{ old('price') }}" placeholder="Masukan Harga Event">
-                                     </div>
+                                        <span class="text-muted">isikan 0 jika event anda FREE</span>
+                                    </div>
                                 
                                </div>
                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Deskripsi Event</label>
-                                        <textarea name="description" id="editor">{{ old('desciption') }}</textarea>
+                                        <textarea name="description" id="editor">{{ old('description') }}</textarea>
                                     </div>
                                </div>
-                               <div class="col-md-12">
+                               <div class="col-md-6">
                                    <div class="form-group">
                                        <label>Tanggal dan Waktu</label>
                                     <input type="text" id="date_time" name="date_time" class="form-control" value="{{ old('date_time') }}" readonly autocomplete="off">
                                    </div>
                                </div>
-                               <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Tipe Event</label>
+                                        <select name="event_type" class="form-control">
+                                            <option value="">-- Pilih Tipe Event --</option>
+                                            <option value="FREE">FREE</option>
+                                            <option value="PREMIUM">PREMIUM</option>
+                                        </select>
+                                    </div>
+                               </div>
+                               <div class="col-md-6">
+                                   <div class="form-group">
+                                       <label>Lokasi Event</label>
+                                       <select name="location" class="form-control">
+                                            <option value="">-- Pilih Lokasi Event --</option>
+                                            <option value="Jakarta Barat">JAKARTA BARAT</option>
+                                            <option value="Jakarta Timur">JAKARTA TIMUR</option>
+                                            <option value="Jakarta Utara">JAKARTA UTARA</option>
+                                            <option value="Jakarta Selatan">JAKARTA SELATAN</option>
+                                            <option value="Kepulauan Seribu">KEPULAUAN SERIBU</option>
+                                            
+                                        </select>
+                                       
+                                </div>
+                               </div>
+                               <div class="col-md-6">
                                    <div class="form-group">
                                        <label>Lokasi</label>
-                                    <input type="text" name="location" class="form-control" value="{{ old('location') }}">
+                                       <input type="text" name="location_details" class="form-control" value="{{ old('location_details') }}">
+                                       <span class="text-muted">Contoh : Link iframe Google Maps</span>
                                    </div>
                                </div>
                            </div>
@@ -119,7 +146,6 @@
                 format: 'Y-m-d H:i',
                 weeks: true,
                 minDate: true,
-                minTime: true,
                 lazyInit: true,
                 fixed: true,
                 lang: 'id',

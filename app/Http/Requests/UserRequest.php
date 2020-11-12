@@ -26,7 +26,7 @@ class UserRequest extends FormRequest
         return [
             'name' => 'required|string|max:30',
             'email' => 'required|email|unique:users',
-            'password' => 'required|string|min:8',
+            'password' => 'required|string|min:6',
             'roles' => 'nullable|string|in:SUPERADMIN,ADMIN,USER',
             'address' => 'required|string',
             'province_id' => 'required',

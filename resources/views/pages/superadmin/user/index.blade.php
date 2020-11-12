@@ -25,13 +25,13 @@
                         <table class="table table-hover scroll-horinzontal-vertical w-100" id="crudTable">
                             <thead>
                                 <tr>
-                                    <th>Nama</th>
-                                    <th>Email</th>
-                                    <th>Roles</th>
-                                    <th>Aksi</th>
+                                    <th style="font-size: 14px">Nama</th>
+                                    <th style="font-size: 14px">Email</th>
+                                    <th style="font-size: 14px">Roles</th>
+                                    <th style="font-size: 14px">Aksi</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="font-size: 15px">
 
                             </tbody>
                         </table>

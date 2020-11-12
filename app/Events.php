@@ -12,7 +12,7 @@ class Events extends Model
 
     
     protected $fillable = [
-        'user_id','category_id','name','price','description','date_time','location',
+        'user_id','category_id','name','slug','price','description','date_time','event_type','location','location_details',
     ];
 
     protected $hidden = [
@@ -34,4 +34,16 @@ class Events extends Model
         return $this->belongsTo(Category::class);
 
     }
+
+    public function galleries()
+    {
+        return $this->hasMany(EventGallery::class, 'event_id', 'id');
+    }
+
+    public function event_user()
+    {
+        return $this->hasMany(EventUser::class,'event_id','id');
+    }
+
+
 }

@@ -25,7 +25,9 @@ class EventGalleryRequest extends FormRequest
     {
         return [
             'event_id'      => 'required|exists:events,id',
-            'photos'      => 'required|image|mimes:jpeg,png,jpg',
+            'photos'      => 'required',
+            'photos.*'      => 'required|image|mimes:jpeg,png,jpg',
+            
 
         ];
     }

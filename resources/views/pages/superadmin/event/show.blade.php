@@ -46,9 +46,17 @@
                               <th>Tanggal dan Waktu Event</th>
                               <td>{{ $item->date_time->format('d M Y H:i') }}</td>
                           </tr>
+                           <tr>
+                              <th>Tipe Event</th>
+                              <td>{{ $item->event_type }}</td>
+                          </tr>
+                           <tr>
+                              <th>Kota Event</th>
+                              <td>{{ $item->location }}</td>
+                          </tr>
                           <tr>
                               <th>Lokasi Event</th>
-                              <td class="text-center">{!! $item->location !!}</td>
+                              <td class="text-center">{!! $item->location_details !!}</td>
                           </tr>
                       </tbody>
                    </table>
