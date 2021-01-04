@@ -11,16 +11,43 @@
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item active">Dashboard</li>
         </ol>
-    
+        
         <div class="card mb-4">
+            
             <div class="card-header">
-                <i class="fas fa-table mr-1"></i>
-                Table Pengunjung Event {{ $event->name }}
+                 @if($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    @if (session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                <form method="POST" action="{{ route('event.admin.index.event.update.check.in', $event->slug) }}" class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+                    @csrf
+                    @method('PUT')
+                    <div class="input-group">
+                        <input class="form-control" type="text" name="code" placeholder="Input Kode Unik"/>
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                </form>
             </div>
+           
             <div class="card-body">
-                <a href="{{ route('event.admin.create.user', $event->slug ) }}" class="btn btn-info mb-3">
-                (+) Tambah Pengunjung Baru
-                </a>
+                
                 <div class="table-responsive">
                     <table class="table table-hover scroll-horinzontal-vertical w-100" id="crudTable">
                         <thead>
@@ -29,7 +56,7 @@
                                 <th style="font-size: 14px">Nomor Telepon</th>
                                 <th style="font-size: 14px">Profesi</th>
                                 <th style="font-size: 14px">Code</th>
-                                <th style="font-size: 14px">Action</th>
+                                <th style="font-size: 14px">Status</th>
                             </tr>
                         </thead>
                         <tbody style="font-size: 15px">
@@ -64,51 +91,12 @@
                 { data: 'user.mobile_number' , name:  'user.mobile_number' },
                 { data: 'user.position' , name: 'user.position' },
                 { data: 'code' , name: 'code' },
-               
-
-                {
-                    data: 'action',
-                    name: 'action',
-                    orderable: false,
-                    searcable: false,
-                    width: '15%',
-                }
+                { data: 'status_checkin' , name: 'status_checkin' },
+              
             ]
         });
 
-        $.ajaxSetup({
-            headers:{
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-        $(document).on('click', '.btnDelete', function(e){
-            e.preventDefault();
-            let id = $(this).attr('data-id');
-            swal({
-                title: "Are you sure?",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            })
-            .then((willDelete) => {
-                if (willDelete) {
-                    $.ajax({
-                        url: 'http://tiket-event-laravel.test/admin/event/index' + '/' + id,
-                        type: "POST",
-                        data: {"_method" : "DELETE"}
-                    }).done(function() {
-                        swal("Your data has been delete", {
-                            icon: "success"
-                        });
-                        $('.table').DataTable().ajax.reload();
-                    });
-                } else {
-                    swal("Your data is safe!");
-                }
-            });
-        })
-
+    
     });
 
     </script>

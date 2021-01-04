@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\superAdmin;
 
-use App\Category;
 use App\User;
 use App\Events;
+use App\Category;
 
+use App\EventGallery;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Requests\EventRequest;
@@ -86,64 +87,76 @@ class EventController extends Controller
      */
     public function store(EventRequest $request)
     {
-       $data = $request->all();
 
-       $data['slug'] = Str::slug($request->name);
+        $this->validate($request, [
+        'photos'        => 'required',
+        'photos.*'      => 'required|image|mimes:jpeg,png,jpg',
+        ]);
+        
+        $data = $request->all();
 
-       if($request->event_type == "FREE"){
-           $data['price'] = 0;
+        $data['slug'] = Str::slug($request->name);
 
-           $result = Events::create($data);
+     
+        if($request->event_type == "FREE"){
+            $data['price'] = 0;
 
-            if($result){
-                Alert::success('Berhasil', 'Data Berhasil di Simpan !');    
-            }
-            else{
-                Alert::error('Gagal', 'Data Gagal di Simpan!');  
-            }
-            return redirect()->route('event.index');
+                $result = Events::create($data);
 
-        } else if ($request->event_type == "PREMIUM" && $request->price == 0) {
-            Alert::error('Gagal', 'Silahkan isi Harga Event');
-            return back();
+                $dataPhoto['event_id'] = $result->id;
+                if($request->hasFile('photos')) {
+                        $photos = $request->file('photos');
+                        foreach($photos as $photo) {
 
-        } else {
-            $result = Events::create($data);
+                        $dataPhoto['photos'] = $photo->store('assets/event','public');
+                        $result = EventGallery::create($dataPhoto);
+                    }
+                    
+                }
 
-            if($result){
-                Alert::success('Berhasil', 'Data Berhasil di Simpan !');    
-            }
-            else{
-                Alert::error('Gagal', 'Data Gagal di Simpan !');  
-            }
+
+                if($result){
+                    Alert::success('Berhasil', 'Data Berhasil di Simpan !');    
+                }
+                else{
+                    Alert::error('Gagal', 'Data Gagal di Simpan!');  
+                }
+                
+                
+                return redirect()->route('event.admin.index');
+
+            } else if ($request->event_type == "PREMIUM" && $request->price == 0) {
+                Alert::error('Gagal', 'Silahkan isi Harga Event');
+                return back();
+
+            } else {
+                $result = Events::create($data);
+
+                $dataPhoto['event_id'] = $result->id;
+                 if($request->hasFile('photos')) {
+                        $photos = $request->file('photos');
+                        foreach($photos as $photo) {
+
+                        $dataPhoto['photos'] = $photo->store('assets/event','public');
+                        $result = EventGallery::create($dataPhoto);
+                    }
+                    
+                }
+
+                if($result){
+                    Alert::success('Berhasil', 'Data Berhasil di Simpan !');    
+                }
+                else{
+                    Alert::error('Gagal', 'Data Gagal di Simpan !');  
+                }
+                
+                $dataPhoto['event_id'] = $result->id;
             return redirect()->route('event.index');    
         }
 
-    //    if($request->event_type == "FREE"){
-    //        $data['price'] = 0;
-    //    } 
-
-       
-
-    //    $result = Events::create($data);
-
-       
-    //    if($result){
-    //        Alert::success('Berhasil', 'Data Berhasil di Simpan !');
-    //    }
-    //    else{
-    //        Alert::error('Gagal', 'Data Gagal di Simpan !');
-    //    }
-
-    //    return redirect()->route('event.index');
+   
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $item = Events::with(['user','category'])->findOrFail($id);
@@ -226,5 +239,41 @@ class EventController extends Controller
         $item->delete();
 
         return redirect()->route('event.index');
+    }
+
+    public function uploadGallery(Request $request)
+
+    {
+        $data = $request->all();
+
+        $data['photos'] = $request->file('photos')->store('assets/event','public');
+
+        $result = EventGallery::create($data);
+
+        if($result){
+            Alert::success('Berhasil', 'Data Gallery Berhasil di Tambah !');    
+        }
+    else{
+            Alert::error('Gagal', 'Data Gallery Gagal di Tambah !');  
+        }
+
+        return redirect()->route('event.edit', $request->event_id);
+    }
+
+    
+    public function deleteGallery($id)
+    {
+        $item = EventGallery::findOrFail($id);
+        $result = $item->delete();
+
+       
+        if($result){
+        Alert::success('Berhasil', 'Data Berhasil di Hapus !');    
+        }
+        else{
+            Alert::error('Gagal', 'Data Gagal di Hapus !');  
+        }
+
+        return redirect()->route('event.edit', $item->event_id);
     }
 }

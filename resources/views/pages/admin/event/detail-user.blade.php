@@ -36,19 +36,19 @@
                           </tr>
                            <tr>
                               <th>Provinsi</th>
-                              <td>{{ $EventUser->user->province->name }}</td>
+                              <td>{{ $EventUser->user->province->name ?? '' }}</td>
                           </tr>
                            <tr>
                               <th>Kota</th>
-                              <td>{{ $EventUser->user->regency->name }}</td>
+                              <td>{{ $EventUser->user->regency->name ?? '' }}</td>
                           </tr>
                            <tr>
                               <th>Kecamatan</th>
-                              <td>{{ $EventUser->user->district->name }}</td>
+                              <td>{{ $EventUser->user->district->name ?? '' }}</td>
                           </tr>
                            <tr>
                               <th>Kelurahan</th>
-                              <td>{{ $EventUser->user->village->name }}</td>
+                              <td>{{ $EventUser->user->village->name ?? '' }}</td>
                           </tr>
                            <tr>
                               <th>Nomor Hanphone</th>
@@ -61,6 +61,11 @@
                            <tr>
                               <th>Tiket (QR CODE)</th>
                               <td> <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(150)->generate($EventUser->code)) !!} "></td>
+                          </tr>
+
+                          <tr>
+                              <th>Print Tiket</th>
+                              <td><a href="{{ route('print.tiket', $EventUser->id) }}" target="_blank" class="btn btn-success">Print Tiket</a></td>
                           </tr>
 
                          

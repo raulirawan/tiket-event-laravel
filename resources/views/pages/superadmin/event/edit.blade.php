@@ -72,6 +72,13 @@
                                      </div>
                                 
                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Stok Event</label>
+                                        <input type="number" name="price" class="form-control" value="{{ $item->event_stock }}" placeholder="Masukan Harga Event">
+                                     </div>
+                                
+                               </div>
                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Deskripsi Event</label>
@@ -116,6 +123,50 @@
                </div>
             </div>
         </div>
+
+         <div class="card mb-4">
+            <div class="card-body pb-5">
+                <div class="row">
+                @foreach ($item->galleries as $gallery)
+                    
+                 <div class="col-md-3">
+                  <div class="gallery-container">
+                    <img
+                      src="{{ Storage::url($gallery->photos ?? '') }}"
+                      alt=""
+                      class="w-100"
+                    />
+                    <a href="{{ route('event.delete.gallery', $gallery->id) }}" class="delete-gallery">
+                      <img src="{{ url('frontend/images/icon-delete.svg') }}" alt="" />
+                    </a>
+                  </div>
+                </div>
+
+                @endforeach
+                
+                <div class="col-12">
+                  <form action="{{ route('event.upload.gallery') }}" method="POST" enctype="multipart/form-data">
+                  @csrf
+                    <input type="hidden" name="event_id" value="{{ $item->id }}">
+                    <input
+                    type="file"
+                    name="photos"
+                    id="file"
+                    style="display: none;"
+                    onchange="form.submit()"
+                  />
+                  <button
+                    type="button"
+                    class="btn btn-secondary btn-block mt-3"
+                    onclick="thisFileUpload()"
+                  >
+                    Add Photo
+                  </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+        </div>
     </div>
 </main>
     
@@ -126,6 +177,12 @@
 <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
 <script>
     CKEDITOR.replace( 'editor' );
+</script>
+
+<script>
+     function thisFileUpload() {
+      document.getElementById("file").click();
+    }
 </script>
 
   <script>

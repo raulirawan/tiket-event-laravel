@@ -15,7 +15,7 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-images"></i></div>
                     Event Gallery
                 </a> --}}
-                 <a class="nav-link" href="{{ route('transaction.index') }}">
+                 <a class="nav-link" href="{{ route('transaction.admin.index') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-images"></i></div>
                     Transaction
                 </a>

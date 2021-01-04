@@ -174,7 +174,7 @@
                         <div class="price-event">Rp{{ number_format($event->price) }}</div>
 
                         @else
-                        <div class="price-event">GRATIS</div>
+                        <div class="price-event">FREE</div>
                         @endif
                       </div>
                     </div>

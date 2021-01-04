@@ -39,12 +39,28 @@ class EventAdminController extends Controller
                         <button type="submit" class="btn-sm btn-danger btnDelete" data-id="'. $item->id .'"><i class="fas fa-trash-alt"></i></button>
 
                         </form> 
+                        
                         </div>
                     
                     ';
                     
 
                 })
+
+                ->addColumn('check', function($item)   {
+                    return '
+                      <div class="text-center">
+                        <a href=" '. route('event.admin.index.event.check.in', $item->slug) .' " class="btn-sm btn-success"><i class="fas fa-sign-in-alt"></i></a>
+                        <a href=" '. route('event.admin.index.event.check.out', $item->slug) .' " class="btn-sm btn-danger"><i class="fas fa-sign-out-alt"></i></a>
+
+
+                        </div>
+                    
+                    ';
+                    
+
+                })
+
                 ->editColumn('date_time', function($item) {
                     return ($item->date_time->format('d M Y H:i'));
                 })
@@ -52,7 +68,7 @@ class EventAdminController extends Controller
                     return 'Rp'. number_format($item->price) .',00';
                 })
 
-                ->rawColumns(['action'])
+                ->rawColumns(['action','check'])
                 ->make();
 
               
@@ -220,7 +236,7 @@ class EventAdminController extends Controller
         if($result){
             Alert::success('Berhasil', 'Data Gallery Berhasil di Tambah !');    
         }
-    else{
+        else{
             Alert::error('Gagal', 'Data Gallery Gagal di Tambah !');  
         }
 
@@ -323,7 +339,13 @@ class EventAdminController extends Controller
         $event_user->status_checkin = 0;
         $event_user->save();
 
+        $minStock = Events::findOrFail($request->event_id);
+
+        $minStock->event_stock -= 1;
+        $minStock->save();
+        
         if($result){
+
             Alert::success('Berhasil', 'Data Berhasil Pengunjung Berhasil Di Tambahkan !');    
         }
         else{
@@ -396,6 +418,120 @@ class EventAdminController extends Controller
         $event_user->delete();
 
         return redirect()->route('event.admin.index.event', $event_user->event->slug);
+    }
+
+
+
+    //checkin checkout
+    public function indexEventCheckIn($id)
+    {
+        $event = Events::with(['user'])->where('slug', $id)->firstOrFail();
+        
+
+        if(request()->ajax())
+        {
+            $query  = EventUser::with(['user','event'])
+                    ->where('event_id', $event->id)->get();
+
+            return DataTables::of($query)
+                ->editColumn('status_checkin', function($item)   {
+                   if($item->status_checkin == 1){
+                        return '<span class="badge badge-success">'. "Check In" .'</span>';
+                   }
+                   else {
+                        return '<span class="badge badge-danger">'. "Check Out" .'</span>';
+                   }
+                   
+                })
+                ->rawColumns(['status_checkin'])
+                ->make();
+
+
+              
+                
+        }
+        return view('pages.admin.event.index-event-checkin', compact('event'));
+
+    }
+
+    public function updateStatusCheckIn(Request $request)
+    {   
+        $this->validate($request, [
+            'code' => 'required',
+        ]);
+        
+        $CekData  = EventUser::with(['user','event'])
+            ->where('code', $request->code)->exists();
+            
+
+           if($CekData){
+                $EventUser  = EventUser::with(['user','event'])
+                ->where('code', $request->code)->first();
+
+                $data['status_checkin'] = 1;
+                $EventUser->update($data);
+
+                return redirect()->route('event.admin.index.event.check.in', $EventUser->event->slug)->with('status','Berhasil Check In');
+           }
+
+           else {
+                return redirect()->back()->with('error','Data Tidak Di Temukan !');
+           }
+    }
+
+     public function indexEventCheckOut($id)
+    {
+        $event = Events::with(['user'])->where('slug', $id)->firstOrFail();
+        
+
+        if(request()->ajax())
+        {
+            $query  = EventUser::with(['user','event'])
+                    ->where('event_id', $event->id)->get();
+
+            return DataTables::of($query)
+                ->editColumn('status_checkin', function($item)   {
+                   if($item->status_checkin == 1){
+                        return '<span class="badge badge-success">'. "Check In" .'</span>';
+                   }
+                   else {
+                        return '<span class="badge badge-danger">'. "Check Out" .'</span>';
+                   }
+                   
+                })
+                ->rawColumns(['status_checkin'])
+                ->make();
+
+              
+                
+        }
+        return view('pages.admin.event.index-event-checkout', compact('event'));
+
+    }
+
+     public function updateStatusCheckOut(Request $request)
+    {   
+        $this->validate($request, [
+            'code' => 'required',
+        ]);
+        
+        $CekData  = EventUser::with(['user','event'])
+            ->where('code', $request->code)->exists();
+            
+
+           if($CekData){
+                $EventUser  = EventUser::with(['user','event'])
+                ->where('code', $request->code)->first();
+
+                $data['status_checkin'] = 0;
+                $EventUser->update($data);
+
+                return redirect()->route('event.admin.index.event.check.out', $EventUser->event->slug)->with('status','Berhasil Check Out');
+           }
+
+           else {
+                return redirect()->back()->with('error','Data Tidak Di Temukan !');
+           }
     }
 
 }

@@ -31,6 +31,7 @@
                                 <th style="font-size: 14px">Harga Event</th>
                                 <th style="font-size: 14px">Tanggal Event</th>
                                 <th style="font-size: 14px">Tipe Event</th>
+                                <th style="font-size: 14px">Stock</th>
                                 <th style="font-size: 14px">Action</th>
                             </tr>
                         </thead>
@@ -68,6 +69,7 @@
                 { data: 'price' , name:  'price' },
                 { data: 'date_time' , name: 'date_time' },
                 { data: 'event_type' , name: 'event_type' },
+                { data: 'event_stock' , name: 'event_stock' },
                
 
                 {

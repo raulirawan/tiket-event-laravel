@@ -68,7 +68,7 @@
                 <h2>{{ $event->name }}</h2>
               </div>
               <div class="owner-event">By, {{ $event->user->name }}</div>
-              <div class="price">Rp200.000</div>
+              <div class="price">Rp{{ number_format($event->price) }}</div>
               <div class="description">
                 {!! $event->description !!}
               </div>
@@ -94,16 +94,28 @@
                   <div class="item-information d-flex justify-content-between">
                     @if($event->event_type == 'PREMIUM')
                     <div class="type">Price</div>
-                    <div class="">Rp{{ $event->price }}</div>
+                    <div class="">Rp{{ number_format($event->price) }}</div>
                     @else
                     <div class=""></div>
                     @endif
                   </div>
-                  <a
-                    href="{{ route('cart') }}"
-                    class="btn btn-add px-4 text-white btn-block mb-3"
-                    >Add To Cart
-                  </a>
+                  @auth
+                  <form action="{{ route('add-ticket', $event->id) }}" method="POST" enctype="multipart/form-data">
+                      @csrf
+                      <button 
+                      type="submit"
+                      class="btn btn-add px-4 text-white btn-block mb-3"
+                        >Buy Ticket
+                      </button>
+                  </form>
+                  @endauth
+                  @guest
+                      <a
+                        href="{{ route('login') }}"
+                        class="btn btn-add px-4 text-white btn-block mb-3"
+                        >Login to Buy Ticket
+                      </a>
+                  @endguest
                 </div>
               </div>
             </div>

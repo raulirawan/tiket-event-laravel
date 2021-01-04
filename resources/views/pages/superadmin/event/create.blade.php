@@ -74,6 +74,14 @@
                                </div>
                                <div class="col-md-12">
                                     <div class="form-group">
+                                        <label>Stock Event</label>
+                                        <input type="number" name="event_stock" class="form-control" value="{{ old('event_stock') }}" placeholder="Masukan Stock Event">
+                                        <span class="text-muted">minimal 500 tiket</span>
+                                    </div>
+                                
+                               </div>
+                               <div class="col-md-12">
+                                    <div class="form-group">
                                         <label>Deskripsi Event</label>
                                         <textarea name="description" id="editor">{{ old('description') }}</textarea>
                                     </div>
@@ -115,6 +123,13 @@
                                        <input type="text" name="location_details" class="form-control" value="{{ old('location_details') }}">
                                        <span class="text-muted">Contoh : Link iframe Google Maps</span>
                                    </div>
+                               </div>
+                               <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Foto Event ( Thumbnails )</label>
+                                        <input type="file" name="photos[]" class="form-control" multiple="true">
+                                        <div class="text-muted">Kamu Bisa Memilih Lebih dari Satu File</div>
+                                     </div>
                                </div>
                            </div>
                            

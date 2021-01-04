@@ -106,7 +106,7 @@
                                        <span class="text-muted">Contoh : Link iframe Google Maps</span>
                                    </div>
                                </div>
-                                 <div class="col-md-12">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Foto Event ( Thumbnails )</label>
                                         <input type="file" name="photos[]" class="form-control" multiple="true">

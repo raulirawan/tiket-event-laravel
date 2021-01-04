@@ -44,7 +44,7 @@
                                </div>
                            </div>
                            <div class="row">
-                                 <div class="col-md-6">
+                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Kategori Event</label>
                                         <select name="category_id" class="form-control">
@@ -54,13 +54,6 @@
                                             @endforeach
                                         </select>
                                      </div>
-                               </div>
-                               <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Harga Event</label>
-                                        <input type="number" name="price" class="form-control" value="{{ $item->price }}" placeholder="Masukan Harga Event">
-                                     </div>
-                                
                                </div>
                                <div class="col-md-12">
                                     <div class="form-group">
@@ -75,16 +68,6 @@
                                    </div>
                                </div>
                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Tipe Event</label>
-                                        <select name="event_type" class="form-control">
-                                            <option value="{{ $item->event_type }}">-- Tidak Ganti Tipe Event --</option>
-                                            <option value="FREE">FREE</option>
-                                            <option value="PREMIUM">PREMIUM</option>
-                                        </select>
-                                    </div>
-                               </div>
-                               <div class="col-md-6">
                                    <div class="form-group">
                                        <label>Lokasi Event</label>
                                         <select name="location" class="form-control">
@@ -97,7 +80,7 @@
                                         </select>
                                 </div>
                                </div>
-                               <div class="col-md-6">
+                               <div class="col-md-12">
                                    <div class="form-group">
                                        <label>Lokasi</label>
                                        <input type="text" name="location_details" class="form-control" value="{{ $item->location_details }}">

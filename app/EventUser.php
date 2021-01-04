@@ -9,7 +9,7 @@ class EventUser extends Model
     protected $table = 'event_users';
 
      protected $fillable = [
-        'event_id','user_id','code','status_checkin',
+        'transaction_id','event_id','user_id','code','status_checkin',
     ];
 
     protected $hidden = [
@@ -26,5 +26,9 @@ class EventUser extends Model
         return $this->belongsTo(Events::class);
     }
 
+    public function transaction()
+    {
+        return $this->belongsTo(Transaction::class);
+    }
 
 }

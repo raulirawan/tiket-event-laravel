@@ -21,7 +21,12 @@
           </div>
         </div>
       </section>
+      
+        @php
+          $cartCount = \App\Cart::where('user_id', Auth::user()->id)->count();
+        @endphp
 
+        @if($cartCount > 0)
       <section class="section-order-tiket">
         <div class="container">
           <div
@@ -48,42 +53,39 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td style="width: 20%">
-                      <img src="{{ url('frontend/images/1.jpg') }}" alt="" class="cart-image" />
-                    </td>
-                    <td style="width: 35%">
-                      <div class="event-title">Indonesia Food Diary</div>
-                      <div class="event-subtitle">By, PT. Indo Persada</div>
-                    </td>
-                    <td style="width: 35%">
-                      <div class="event-title">Rp200.000</div>
-                      <div class="event-subtitle">IDR</div>
-                    </td>
-                    <td style="width: 35%">
-                      <a href="#" class="btn btn-remove px-4">Remove</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="width: 20%">
-                      <img src="{{ url('frontend/images/3.jpg') }}" alt="" class="cart-image" />
-                    </td>
-                    <td style="width: 35%">
-                      <div class="event-title">DWS x Younglex</div>
-                      <div class="event-subtitle">By, PT. Indo Persada</div>
-                    </td>
-                    <td style="width: 35%">
-                      <div class="event-title">Rp300.000</div>
-                      <div class="event-subtitle">IDR</div>
-                    </td>
-                    <td style="width: 35%">
-                      <a href="#" class="btn btn-remove px-4">Remove</a>
-                    </td>
-                  </tr>
+                  
+                  @foreach ($carts as $cart)
+                      <tr>
+                        <td style="width: 20%">
+                          <img src="{{ Storage::url($cart->event->galleries->first()->photos) }}" alt="" class="cart-image" />
+                        </td>
+                        <td style="width: 35%">
+                          <div class="event-title">{{ $cart->event->name }}</div>
+                          <div class="event-subtitle">By, {{ $cart->event->user->name }}</div>
+                        </td>
+                        <td style="width: 35%">
+                          @if($cart->event->event_type == 'PREMIUM')
+                          <div class="event-title">Rp{{ number_format($cart->event->price) }}</div>
+                          @else
+                          <div class="event-title">FREE</div>
+                          @endif
+                          <div class="event-subtitle">IDR</div>
+                        </td>
+                        <td style="width: 35%">
+                           <form action="{{ route('cart-delete', $cart->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                          <button type="submit" class="btn btn-remove px-4">Remove</button>
+                          </form>
+                        </td>
+                      </tr>
+                  @endforeach
+                 
                 </tbody>
               </table>
             </div>
 
+            
             <div class="col-lg-4 col-12">
               <div class="card">
                 <div class="card-body">
@@ -92,36 +94,48 @@
                     class="payment-information d-flex justify-content-between"
                   >
                     <div class="side-left text-muted">Your Name</div>
-                    <div class="side-right">Raul Irawan</div>
+                    <div class="side-right">{{ $cart->user->name }}</div>
                   </div>
                   <div
                     class="payment-information d-flex justify-content-between"
                   >
                     <div class="side-left text-muted">Your Email</div>
-                    <div class="side-right">raulirawan@gmail.com</div>
+                    <div class="side-right">{{ $cart->user->email }}</div>
                   </div>
-                  <div
+      
+                  <div class="border-bottom mb-4"></div>
+                  
+                  @if($cart->event->event_type == 'PREMIUM')
+                   <div
                     class="payment-information d-flex justify-content-between"
                   >
-                    <div class="side-left text-muted">Mobile Number</div>
-                    <div class="side-right">087883496655</div>
+                    <div class="side-left text-muted">Total Price</div>
+                    <div class="side-right">Rp{{ number_format($cart->event->price) }}</div>
                   </div>
-                  <div class="border-bottom mb-4"></div>
+                  @else
                   <div
                     class="payment-information d-flex justify-content-between"
                   >
                     <div class="side-left text-muted">Total Price</div>
-                    <div class="side-right">Rp500.000</div>
+                    <div class="side-right">FREE</div>
                   </div>
+                 
+                  @endif
 
-                  <a href="{{ route('success') }}" class="btn btn-checkout d-block mt-4"
-                    >Checkout Now</a
-                  >
+                  <form action="{{ route('checkout') }}" method="POST" enctype="multipart/form-data">
+                     @csrf
+                    <button type="submit" class="btn btn-checkout btn-block mt-4">Checkout Now</button>
+                  </form>
                 </div>
               </div>
             </div>
+
+           
           </div>
         </div>
       </section>
+        @else
+        <div class="text-center" data-aos="fade-up">Data Keranjang Kosong, Silahkan Melakukan Pembelian Tiket</div>
+        @endif
     </div>
 @endsection

@@ -12,7 +12,8 @@ class Events extends Model
 
     
     protected $fillable = [
-        'user_id','category_id','name','slug','price','description','date_time','event_type','location','location_details',
+        'user_id','category_id','name','slug','price',
+        'description','date_time','event_type','location','location_details','event_stock',
     ];
 
     protected $hidden = [

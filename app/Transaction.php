@@ -11,7 +11,7 @@ class Transaction extends Model
     // use SoftDeletes;
 
     protected $fillable = [
-        'user_id','total_price','code_transaction','status'
+        'event_id','user_id','total_price','code_transaction','status'
     ];
 
     protected $hidden = [
@@ -22,5 +22,16 @@ class Transaction extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function event()
+    {
+        return $this->belongsTo(Events::class);
+    }
+
+    public function event_user()
+    {
+        return $this->hasMany(EventUser::class,'transaction_id','id');
+    }
+
 
 }
