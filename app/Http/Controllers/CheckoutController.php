@@ -10,61 +10,105 @@ use App\Transaction;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Mail\TransactionSuccess;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+
+use Midtrans\Config;
+use Midtrans\Snap;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CheckoutController extends Controller
 {
     public function checkout(Request $request)
     {
-        $code = 'EVNT-' . mt_rand(00000,99999);
+        $code = 'EVNT-' . mt_rand(00000, 99999);
 
-        $cart = Cart::with(['event','user'])
-                ->where('user_id', Auth::user()->id)
-                ->first();
+        $cart = Cart::with(['event', 'user'])
+            ->where('user_id', Auth::user()->id)
+            ->first();
 
         // dd($cart);
 
-       
-        $data = [
-            'event_id'                  => $cart->event_id,
-            'user_id'                   => Auth::user()->id,
-            'total_price'               => $cart->event->price,
-            'code_transaction'          => $code,
-            'status'                    => 'PENDING',
-        ];
 
-    
-        
-        $transaction = Transaction::create($data);
+        if (EventUser::where('user_id', $cart->user_id)
+            ->where('event_id', $cart->event_id)
+            ->exists()
+        ) {
+            Alert::error('Gagal', 'Data Anda Sudah Terdaftar di Event Ini');
+            return redirect()->route('cart');
+        } else {
 
-        $EventUser = EventUser::create([
-        'event_id'                  => $cart->event_id,
-        'user_id'                   => Auth::user()->id,
-        'transaction_id'            => $transaction->id,
-        'code'                      => Str::random(10),
-        'status_checkin'            => 0,
-        ]);
-        
+            $data = [
+                'event_id'                  => $cart->event_id,
+                'user_id'                   => Auth::user()->id,
+                'total_price'               => $cart->event->price,
+                'code_transaction'          => $code,
+                'status'                    => 'PENDING',
+            ];
 
-        
-        
-        // dd($EventUser->transaction->user->name);
+            $transaction = Transaction::create($data);
 
-        $minStock = Events::findOrFail($cart->event_id);
+            // $EventUser = EventUser::create([
+            //     'event_id'                  => $cart->event_id,
+            //     'user_id'                   => Auth::user()->id,
+            //     'transaction_id'            => $transaction->id,
+            //     'code'                      => Str::random(10),
+            //     'status_checkin'            => 0,
+            // ]);
 
-        $minStock->event_stock -= 1;
-        $minStock->save();
-
-        Cart::with(['event','user'])
+            Cart::with(['event', 'user'])
                 ->where('user_id', Auth::user()->id)
                 ->delete();
 
-            
+            // dd($EventUser->transaction->user->name);
 
-        Mail::to($EventUser->user)->send(
-            new TransactionSuccess($EventUser));
+            // $minStock = Events::findOrFail($cart->event_id);
 
-        return redirect()->route('success');
+            // $minStock->event_stock -= 1;
+            // $minStock->save();
+
+
+
+
+            //ser konfigurasi midtrans
+            Config::$serverKey = config('services.midtrans.serverKey');
+            Config::$isProduction = config('services.midtrans.isProduction');
+            Config::$isSanitized = config('services.midtrans.isSanitized');
+            Config::$is3ds = config('services.midtrans.is3ds');
+
+
+            //Buat Array Untuk Kirim API MIDTRANS
+            $midtrans_params = [
+                'transaction_details' => [
+                    'order_id' => 'MIDTRANS-' . $transaction->id,
+                    'gross_amount' => (int) $transaction->total_price,
+                ],
+
+                'customer_details' => [
+                    'first_name' => $transaction->user->name,
+                    'email' => $transaction->user->email,
+                ],
+
+                'enable_payments' => ['gopay'],
+                'vtweb' => [],
+            ];
+
+            try {
+                //ambil halaman payment midtrans
+                $paymentUrl = Snap::createTransaction($midtrans_params)->redirect_url;
+
+                //reditect halaman midtrans
+                return redirect($paymentUrl);
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
+        }
+        //kirim email
+        // Mail::to($EventUser->user)->send(
+        //     new TransactionSuccess($EventUser)
+        // );
+
+        // return redirect()->route('success');
     }
 }

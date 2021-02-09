@@ -102,11 +102,20 @@
                   @auth
                   <form action="{{ route('add-ticket', $event->id) }}" method="POST" enctype="multipart/form-data">
                       @csrf
+
+                      @if ($event->event_stock > 0)
                       <button 
                       type="submit"
                       class="btn btn-add px-4 text-white btn-block mb-3"
                         >Buy Ticket
                       </button>
+
+                      @else
+                      <button 
+                      class="btn btn-danger px-4 text-white btn-block mb-3"
+                        disabled>Sold Out
+                      </button>
+                      @endif
                   </form>
                   @endauth
                   @guest

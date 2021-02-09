@@ -26,5 +26,6 @@
     @stack('up-script')
     @include('includes.script')
     @stack('down-script')
+    @include('sweetalert::alert')
   </body>
 </html>

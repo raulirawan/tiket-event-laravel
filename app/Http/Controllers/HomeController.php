@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Events;
 use App\Category;
+use App\EventUser;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class HomeController extends Controller
 {
@@ -15,7 +17,7 @@ class HomeController extends Controller
      */
     // public function __construct()
     // {
-    //     $this->middleware('auth');
+    //     $this->middleware(['auth','verified']);
     // }
 
     /**
@@ -31,12 +33,15 @@ class HomeController extends Controller
         return view('pages.home', compact('categories', 'events'));
     }
 
+    public function checkTicket(Request $request)
+    {
+        $keyword = $request->get('keyword');
 
+        // $ticket = EventUser::all();
 
+        $ticket = EventUser::where("code",$keyword)->first();
 
-
-
-
-
-
+       
+        return view('pages.ticket.check-ticket', compact('ticket'));
+    }
 }

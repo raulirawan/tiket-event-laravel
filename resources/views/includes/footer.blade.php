@@ -25,7 +25,7 @@
                 <h4 class="mb-3">Support</h4>
                 <ul class="list-unstyled">
                   <li>
-                    <a href=""> Check Ticket </a>
+                    <a href="{{ route('check.ticket') }}"> Check Ticket </a>
                   </li>
                   <li>
                     <a href=""> How to buy tickets </a>

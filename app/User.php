@@ -11,7 +11,7 @@ use App\Models\Regency;
 use App\Models\District;
 use App\Models\Village;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
     use SoftDeletes;

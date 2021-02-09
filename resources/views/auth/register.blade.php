@@ -56,6 +56,33 @@
                                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                             </div>
                                         </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Daftar Sebagai</label>
+                                                <select name="roles" class="form-control">
+                                                    <option value="USER">Peserta</option>
+                                                    <option value="ADMIN">Penyelenggara Event</option>
+                                                </select>
+                                            </div>
+                                       </div>
+                                       <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Daftar Sebagai</label>
+                                            <select name="position" class="form-control">
+                                                <option value="Wirausaha">Wirausaha</option>
+                                                <option value="Karyawan Negeri">Karyawan Negeri</option>
+                                                <option value="Karyawan Swasta">Karyawan Swasta</option>
+                                                <option value="Buruh">Buruh</option>
+                                                <option value="Pelajar / Mahasiswa">Pelajar / Mahasiswa</option>
+                                            </select>
+                                        </div>
+                                   </div>
+                                   <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="small mb-1" for="mobile_number">Nomor Telepon</label>
+                                        <input id="mobile_number"  class="form-control" name="mobile_number" required autocomplete="mobile_number">
+                                    </div>
+                                </div>
                                     </div>
                                     <div class="form-group mt-4 mb-0"><button class="btn btn-primary btn-block" type="submit">{{ __('Register') }}</button></div>
                                 </form>

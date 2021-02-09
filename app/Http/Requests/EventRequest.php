@@ -32,6 +32,7 @@ class EventRequest extends FormRequest
             'date_time'     => 'required',
             'location'     => 'required|string',
             'location_details'     => 'required|string',
+            'event_stock' => 'required|integer|min:100'
             
         ];
     }

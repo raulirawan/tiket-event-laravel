@@ -18,6 +18,8 @@
         "laravel/framework": "^7.24",
         "laravel/tinker": "^2.0",
         "laravel/ui": "2.4",
+        "maatwebsite/excel": "^3.1",
+        "midtrans/midtrans-php": "^2.3",
         "realrashid/sweet-alert": "^3.1",
         "simplesoftwareio/simple-qrcode": "~4",
         "yajra/laravel-datatables-oracle": "~9.0"

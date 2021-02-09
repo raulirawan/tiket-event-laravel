@@ -34,7 +34,7 @@ class TransactionController extends Controller
                 })
 
                 ->editColumn('total_price', function($item) {
-                    return 'Rp'. number_format($item->total_price) .',00';
+                    return 'Rp '. number_format($item->total_price) .',00';
                 })
                ->editColumn('status', function($item)   {
                    if($item->status == 'PENDING'){

@@ -7,6 +7,7 @@ use App\Events;
 use App\Category;
 use App\EventUser;
 use App\EventGallery;
+use App\Exports\EventUserExport;
 use App\Models\Province;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -167,8 +168,19 @@ class EventAdminController extends Controller
         return view('pages.admin.event.edit', compact('categories','item'));
     }
 
-    public function update(EventRequest $request, $id)
+    public function update(Request $request, $id)
     {
+
+        $this->validate($request, [
+            'user_id'      => 'required|exists:users,id',
+            'name'         => 'required',
+            'category_id'      => 'required|exists:categories,id',
+            'description'   => 'required',
+            'date_time'     => 'required',
+            'location'     => 'required|string',
+            'location_details'     => 'required|string',
+        ]);
+
         $data = $request->all();
 
         $data['slug'] = Str::slug($request->name);
@@ -509,7 +521,7 @@ class EventAdminController extends Controller
 
     }
 
-     public function updateStatusCheckOut(Request $request)
+    public function updateStatusCheckOut(Request $request)
     {   
         $this->validate($request, [
             'code' => 'required',
@@ -532,6 +544,14 @@ class EventAdminController extends Controller
            else {
                 return redirect()->back()->with('error','Data Tidak Di Temukan !');
            }
+    }
+
+    public function exportExcel($id)
+    {
+
+        $event = Events::findOrFail($id);
+
+        return (new EventUserExport($id))->download('Report-Data-Peserta-'.$event->name.'.xlsx');
     }
 
 }

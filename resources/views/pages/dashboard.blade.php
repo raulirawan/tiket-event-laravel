@@ -1,4 +1,4 @@
-@extends('layouts.admin-event')
+@extends('layouts.dashboard')
 
 @section('title','Dashboard Admin')
     
@@ -7,32 +7,24 @@
 
 <main>
     <div class="container-fluid">
-        <h1 class="mt-4">Halaman Event {{ $event->name }}</h1>
+        <h1 class="mt-4">Hi, {{ Auth::user()->name }}</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item active">Dashboard</li>
-        </ol>
-    
+        </ol>  
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table mr-1"></i>
-                Table Pengunjung Event {{ $event->name }}
+                Data Ticket 
             </div>
             <div class="card-body">
-                <a href="{{ route('event.admin.create.user', $event->slug ) }}" class="btn btn-info mb-3">
-                (+) Tambah Pengunjung Baru
-                </a>
-                <a href="{{ route('export-excel', $event->id) }}" class="btn btn-success text-right mb-3">
-                    Export Excel
-                    </a>
                 <div class="table-responsive">
                     <table class="table table-hover scroll-horinzontal-vertical w-100" id="crudTable">
                         <thead>
                             <tr>
-                                <th style="font-size: 14px">Nama Pengunjung</th>
-                                <th style="font-size: 14px">Nomor Telepon</th>
-                                <th style="font-size: 14px">Profesi</th>
-                                <th style="font-size: 14px">Code</th>
-                                <th style="font-size: 14px">Action</th>
+                                <th style="font-size: 14px">Nama Event</th>
+                                <th style="font-size: 14px">Tanggal Event</th>
+                                <th style="font-size: 14px">Status</th>
+                         
                             </tr>
                         </thead>
                         <tbody style="font-size: 15px">
@@ -63,19 +55,10 @@
             },
 
             columns: [
-                { data: 'user.name' , name:  'user.name' },
-                { data: 'user.mobile_number' , name:  'user.mobile_number' },
-                { data: 'user.position' , name: 'user.position' },
-                { data: 'code' , name: 'code' },
+                { data: 'event.name' , name:  'event.name' },
+                { data: 'event.date_time' , name:  'event.date_time' },
+                { data: 'status_checkin' , name:  'status_checkin' },
                
-
-                {
-                    data: 'action',
-                    name: 'action',
-                    orderable: false,
-                    searcable: false,
-                    width: '15%',
-                }
             ]
         });
 
@@ -97,7 +80,7 @@
             .then((willDelete) => {
                 if (willDelete) {
                     $.ajax({
-                        url: 'http://tiket-event-laravel.test/admin/event/index' + '/' + id,
+                        url: '{!! url()->current() !!}' + '/' + id,
                         type: "POST",
                         data: {"_method" : "DELETE"}
                     }).done(function() {
@@ -116,6 +99,5 @@
 
     </script>
 
-    
-@endpush
-
+        
+    @endpush

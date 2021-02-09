@@ -63,6 +63,14 @@
                                 
                                </div>
                                <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Stock Event</label>
+                                    <input type="number" name="event_stock" class="form-control" value="{{ old('event_stock') }}" placeholder="Masukan Stock Event">
+                                    <span class="text-muted">minimal 100 tiket</span>
+                                </div>
+                            
+                           </div>
+                               <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Deskripsi Event</label>
                                         <textarea name="description" id="editor">{{ old('description') }}</textarea>

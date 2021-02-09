@@ -15,13 +15,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link active" href="{{ route('home') }}">Home</a>
+              <a class="nav-link {{ (request()->is('/')) ? 'active' : '' }}" href="{{ route('home') }}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('event') }}">Event</a>
+              <a class="nav-link {{ (request()->is('event')) ? 'active' : '' }}" href="{{ route('event') }}">Event</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('category') }}">Category</a>
+              <a class="nav-link {{ (request()->is('category')) ? 'active' : '' }}" {{ (request()->is('category')) ? 'active' : '' }} href="{{ route('category') }}">Category</a>
             </li>
             @guest
             <li class="nav-item">
