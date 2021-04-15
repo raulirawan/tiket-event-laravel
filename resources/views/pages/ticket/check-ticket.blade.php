@@ -26,7 +26,7 @@
            
           </div>
         </div>
-        @if ($ticket != null)
+        @if ($ticket)
         <table class="table table-responsive">
           <thead>
             <tr>
@@ -49,7 +49,7 @@
         
         </table>
         @else
-
+        
         @endif
           
       </div>

@@ -40,7 +40,7 @@
                                    <div class="form-group">
                                        <label>Status Transaksi</label>
                                         <select name="status" class="form-control">
-                                            <option value="{{ $item->status }}">-- Tidak Ganti Lokasi Transaction --</option>
+                                            <option value="{{ $item->status }}">-- Tidak Ganti Status Transaction --</option>
                                             <option value="SUCCESS">SUCCESS</option>    
                                         </select>
                                 </div>

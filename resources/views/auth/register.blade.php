@@ -19,7 +19,7 @@
                                     <div class="form-row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label class="small mb-1" for="inputFirstName">Name</label>
+                                                <label class="small mb-1" for="inputFirstName">Nama</label>
                                                  <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                                                 @error('name')
                                                     <span class="invalid-feedback" role="alert">
@@ -56,18 +56,9 @@
                                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Daftar Sebagai</label>
-                                                <select name="roles" class="form-control">
-                                                    <option value="USER">Peserta</option>
-                                                    <option value="ADMIN">Penyelenggara Event</option>
-                                                </select>
-                                            </div>
-                                       </div>
                                        <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Daftar Sebagai</label>
+                                            <label class="small mb-1" for="inputConfirmPassword">Profesi</label>
                                             <select name="position" class="form-control">
                                                 <option value="Wirausaha">Wirausaha</option>
                                                 <option value="Karyawan Negeri">Karyawan Negeri</option>
@@ -77,7 +68,7 @@
                                             </select>
                                         </div>
                                    </div>
-                                   <div class="col-md-12">
+                                   <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="small mb-1" for="mobile_number">Nomor Telepon</label>
                                         <input id="mobile_number"  class="form-control" name="mobile_number" required autocomplete="mobile_number">
@@ -100,7 +91,7 @@
         <footer class="py-4 bg-light mt-auto">
             <div class="container-fluid">
                 <div class="d-flex align-items-center justify-content-between small">
-                    <div class="text-muted">Copyright &copy; Evnt.com 2020</div>
+                    <div class="text-muted">Copyright &copy; Evnt.com 2021</div>
                     {{-- <div>
                         <a href="#">Privacy Policy</a>
                         &middot;

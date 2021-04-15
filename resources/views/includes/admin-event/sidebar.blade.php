@@ -15,7 +15,7 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-images"></i></div>
                     Event Gallery
                 </a> --}}
-                 <a class="nav-link" href="{{ route('transaction.admin.index') }}">
+                 <a class="nav-link {{ (request()->is('admin/event/transaction*')) ? 'active' : '' }}" href="{{ route('transaction.admin.index') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-images"></i></div>
                     Transaction
                 </a>
@@ -75,7 +75,6 @@
         </div>
         <div class="sb-sidenav-footer">
             <div class="small">Logged in as:</div>
-            Start Bootstrap
         </div>
     </nav>
 </div>

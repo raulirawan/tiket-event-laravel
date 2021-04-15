@@ -37,11 +37,32 @@ class HomeController extends Controller
     {
         $keyword = $request->get('keyword');
 
+        global $ticket;
         // $ticket = EventUser::all();
+        $ticket = EventUser::where("code", $keyword)->first();
 
-        $ticket = EventUser::where("code",$keyword)->first();
+        if ($ticket) {
+            return view('pages.ticket.check-ticket', compact('ticket'));
+        }
 
-       
+        //kalau keyword keisi
+
+        if ($keyword != null) {
+            Alert::error('Gagal', 'Data Tiket Tidak Di Temukan');
+        }
         return view('pages.ticket.check-ticket', compact('ticket'));
+    }
+
+    public function loadMore(Request $request)
+    {
+        if ($request->ajax()) {
+            if ($request->id) {
+                $events = Events::with(['galleries'])->where('id', '<', $request->id)->orderBy('id','DESC')->limit(6)->get();
+            } else {
+                $events = Events::with(['galleries'])->orderBy('id','DESC')->limit(6)->get();
+            }
+        }
+
+        return view('pages.get-event', compact('events'));
     }
 }

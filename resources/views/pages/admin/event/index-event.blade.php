@@ -7,7 +7,7 @@
 
 <main>
     <div class="container-fluid">
-        <h1 class="mt-4">Halaman Event {{ $event->name }}</h1>
+        <h1 class="mt-4">Halaman Tiket Event {{ $event->name }}</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item active">Dashboard</li>
         </ol>
@@ -19,7 +19,7 @@
             </div>
             <div class="card-body">
                 <a href="{{ route('event.admin.create.user', $event->slug ) }}" class="btn btn-info mb-3">
-                (+) Tambah Pengunjung Baru
+                (+) Tambah Tiket Baru
                 </a>
                 <a href="{{ route('export-excel', $event->id) }}" class="btn btn-success text-right mb-3">
                     Export Excel

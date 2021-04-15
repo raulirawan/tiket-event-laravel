@@ -142,7 +142,7 @@
           <h5>Upcoming Events</h5>
           <div class="row justify-content-center">
             @php $incrementEvent = 0 @endphp
-            @foreach ($events as $event)
+            @forelse ($events as $event)
 
             <div
               class="col-lg-4 col-md-6 col-12 upcoming-event"
@@ -182,10 +182,13 @@
                 </div>
               </a>
             </div>
-            @endforeach    
+            @empty
+            <div class="text-center">No Event Found</div>
+
+            @endforelse    
           </div>
         <div class="row justify-content-center">
-             <div class="btn btn-seemore text-center mt-5 px-4">Load More</div>
+             <a href="{{ route('event') }}" class="btn btn-seemore text-center mt-5 px-4">Load More</a>
         </div>
           </div>
       </section>

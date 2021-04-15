@@ -16,9 +16,9 @@
             class="w-100"
             alt="Image Success"
             />
-            <h2 class="text-center mt-5">Yay! <br />Transaction Success!</h2>
+            <h2 class="text-center mt-5">Yay! <br />Transaction Failed!</h2>
             <div class="message text-center">
-            <p>Check your ticket, in your inbox email Thanks You...</p>
+            <p>Check your transaction, and try again</p>
             </div>
 
             <a href="{{ route('home') }}" class="btn btn-home-page">

@@ -9,7 +9,12 @@
     <div class="container-fluid">
         <h1 class="mt-4">Halaman Transaction</h1>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item active">Dashboard</li>
+            <li class="breadcrumb-item">
+                <a href="{{ route('dashboard') }}">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">
+               Transaction
+            </li>
         </ol>
     
         <div class="card mb-4">
@@ -27,6 +32,7 @@
                                 <th style="font-size: 14px">Total Harga</th>
                                 <th style="font-size: 14px">Status</th>
                                 <th style="font-size: 14px">Tanggal Transaksi</th>
+                                <th style="font-size: 14px">Link Pembayaran</th>
                              
                             </tr>
                         </thead>
@@ -53,6 +59,7 @@ $(document).ready(function() {
         processing: true,
         serverSide: true,
         ordering: true,
+        order: [[ 4, "desc" ]],
         ajax:{
             url: '{!! url()->current() !!}',
         },
@@ -63,7 +70,14 @@ $(document).ready(function() {
             { data: 'total_price' , name:  'total_price' },
             { data: 'status' , name:  'status' },
             { data: 'created_at' , name:  'created_at' },
-           
+                  
+            {
+                    data: 'payment_link',
+                    name: 'payment_link',
+                    orderable: false,
+                    searcable: false,
+                    width: '15%',
+            }
         ]
     });
 

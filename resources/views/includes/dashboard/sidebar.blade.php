@@ -15,6 +15,14 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-images"></i></div>
                     Transaction
                 </a>
+                <a class="nav-link" {{ (request()->is('profile')) ? 'active' : '' }}" href="{{ route('profile.index') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+                    Profile
+                </a>
+                <a class="nav-link" {{ (request()->is('change-password')) ? 'active' : '' }}" href="{{ route('change.password') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-key"></i></div>
+                    Change Password
+                </a>
                 {{-- <div class="sb-sidenav-menu-heading">Interface</div> --}}
                 {{-- <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -71,7 +79,6 @@
         </div>
         <div class="sb-sidenav-footer">
             <div class="small">Logged in as:</div>
-            Start Bootstrap
         </div>
     </nav>
 </div>

@@ -9,7 +9,12 @@
     <div class="container-fluid">
         <h1 class="mt-4">Halaman Transaction</h1>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item active">Dashboard</li>
+            <li class="breadcrumb-item">
+                <a href="{{ route('dashboard.admin') }}">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">
+               Transaction
+            </li>
         </ol>
     
         <div class="card mb-4">
@@ -76,37 +81,37 @@ $(document).ready(function() {
     });
 
     $.ajaxSetup({
-        headers:{
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-
-    $(document).on('click', '.btnDelete', function(e){
-        e.preventDefault();
-        let id = $(this).attr('data-id');
-        swal({
-            title: "Are you sure?",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        })
-        .then((willDelete) => {
-            if (willDelete) {
-                $.ajax({
-                    url: '{!! url()->current() !!}' + '/' + id,
-                    type: "POST",
-                    data: {"_method" : "DELETE"}
-                }).done(function() {
-                    swal("Your data has been delete", {
-                        icon: "success"
-                    });
-                    $('.table').DataTable().ajax.reload();
-                });
-            } else {
-                swal("Your data is safe!");
+            headers:{
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-    })
+
+        $(document).on('click', '.btnDelete', function(e){
+            e.preventDefault();
+            let id = $(this).attr('data-id');
+            swal({
+                title: "Are you sure?",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    $.ajax({
+                        url: '{!! url()->current() !!}' + '/' + id,
+                        type: "POST",
+                        data: {"_method" : "DELETE"}
+                    }).done(function() {
+                        swal("Your data has been delete", {
+                            icon: "success"
+                        });
+                        $('.table').DataTable().ajax.reload();
+                    });
+                } else {
+                    swal("Your data is safe!");
+                }
+            });
+        })
 
 });
 

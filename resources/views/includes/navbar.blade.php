@@ -25,10 +25,10 @@
             </li>
             @guest
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('login') }}">Sign In</a>
+                <a class="nav-link" href="{{ route('login') }}">Login</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link btn btn-signup px-4" href="{{ route('register') }}">Sign Up</a>
+                <a class="nav-link btn btn-signup px-4" href="{{ route('register') }}">Register</a>
             </li>
             @endguest
 
@@ -46,15 +46,30 @@
                 role="button"
                 data-toggle="dropdown"
               >
-                <img
+              @if (Auth::user()->profile_photo == null)
+              <img src="https://ui-avatars.com/api/?name={{ Auth::user()->name }}" 
+              height="40px" class="rounded-circle mr-2 profile-picture">
+              
+              @else
+              <img src="{{ Storage::url(Auth::user()->profile_photo) }}" 
+              height="40px" class="rounded-circle mr-2 profile-picture">
+                
+              @endif
+                {{-- <img
                   src="{{ url('frontend/images/icon-user.png') }}"
                   alt=""
                   class="rounded-circle mr-2 profile-picture"
-                />
+                /> --}}
                 Hi, {{ Auth::user()->name }}
               </a>
               <div class="dropdown-menu">
-                <a href="#" class="dropdown-item">Dashboard</a>
+                @if (Auth::user()->roles == 'ADMIN')
+                <a href="{{ route('dashboard.admin') }}" class="dropdown-item">Dashboard</a>
+          
+                @else
+                <a href="{{ route('dashboard') }}" class="dropdown-item">Dashboard</a>
+          
+                @endif
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ route('logout') }}"
                 onclick="event.preventDefault();

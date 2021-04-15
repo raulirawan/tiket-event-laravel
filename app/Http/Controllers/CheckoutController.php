@@ -4,18 +4,19 @@ namespace App\Http\Controllers;
 
 
 use App\Cart;
+use Exception;
 use App\Events;
 use App\EventUser;
+use Midtrans\Snap;
 use App\Transaction;
+use Midtrans\Config;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Mail\TransactionSuccess;
-use Exception;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
-
-use Midtrans\Config;
-use Midtrans\Snap;
+use App\Mail\TransactionConfirmation;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class CheckoutController extends Controller
@@ -45,6 +46,7 @@ class CheckoutController extends Controller
                 'total_price'               => $cart->event->price,
                 'code_transaction'          => $code,
                 'status'                    => 'PENDING',
+                'payment_url'               => '',
             ];
 
             $transaction = Transaction::create($data);
@@ -68,7 +70,7 @@ class CheckoutController extends Controller
             // $minStock->event_stock -= 1;
             // $minStock->save();
 
-
+            
 
 
             //ser konfigurasi midtrans
@@ -81,7 +83,7 @@ class CheckoutController extends Controller
             //Buat Array Untuk Kirim API MIDTRANS
             $midtrans_params = [
                 'transaction_details' => [
-                    'order_id' => 'MIDTRANS-' . $transaction->id,
+                    'order_id' => 'EVNT-' . $transaction->id,
                     'gross_amount' => (int) $transaction->total_price,
                 ],
 
@@ -97,12 +99,20 @@ class CheckoutController extends Controller
             try {
                 //ambil halaman payment midtrans
                 $paymentUrl = Snap::createTransaction($midtrans_params)->redirect_url;
+                
+                $transaction->payment_url = $paymentUrl;
+                $transaction->save();
 
+                Mail::to($transaction->user)->send(
+                    new TransactionConfirmation($transaction)
+                );
                 //reditect halaman midtrans
                 return redirect($paymentUrl);
             } catch (Exception $e) {
                 echo $e->getMessage();
             }
+
+            
         }
         //kirim email
         // Mail::to($EventUser->user)->send(
