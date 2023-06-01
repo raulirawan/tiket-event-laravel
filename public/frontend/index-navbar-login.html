@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en" id="home">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Evnt</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link href="style/main.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <nav
+      class="navbar navbar-expand-lg navbar-dark navbar-event fixed-top navbar-fixed-top"
+    >
+      <div class="container">
+        <a class="navbar-brand" href="#">Evnt</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Event</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Category</a>
+            </li>
+          </ul>
+
+          <!-- Desktop Menu -->
+          <ul class="navbar-nav d-none d-lg-flex">
+            <li class="nav-item dropdown">
+              <a
+                href="#"
+                class="nav-link"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+              >
+                <img
+                  src="images/icon-user.png"
+                  alt=""
+                  class="rounded-circle mr-2 profile-picture"
+                />
+                Hi, Angga
+              </a>
+              <div class="dropdown-menu">
+                <a href="dashboard.html" class="dropdown-item">Dashboard</a>
+                <div class="dropdown-divider"></div>
+                <a href="/" class="dropdown-item">Logout</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link d-inline-block mt-2">
+                <img src="images/icon-cart-empty.svg" alt="" />
+              </a>
+            </li>
+          </ul>
+
+          <!-- Mobile Menu -->
+          <ul class="navbar-nav d-block d-lg-none">
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                Hi, Raul
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="#" class="nav-link d-inline-block">
+                Cart
+              </a>
+            </li>
+          </ul>
+          <!-- End Mobile Menu -->
+        </div>
+      </div>
+    </nav>
+
+    <div class="page-content page-home">
+      <section class="section-hero">
+        <div class="container">
+          <div class="row">
+            <div
+              class="col-lg-7 col-12 align-self-center"
+              data-aos="fade-right"
+            >
+              <h5>
+                A New Way to Find
+                <br />
+                Your Favorite Exhibition
+              </h5>
+              <p>
+                Various kinds of events in Jakarta, very interesting,
+                <br />
+                this application is very easy to use
+              </p>
+              <a href="#" class="btn btn-getstarted px-4">Get Started</a>
+            </div>
+
+            <div
+              class="col-lg-5 col-12 align-self-center pt-4 d-none d-lg-block"
+              data-aos="fade-left"
+            >
+              <div class="img-hero">
+                <img src="images/img-hero.svg" class="img-fluid w-100" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-service">
+        <div class="container">
+          <h5 class="text-center" data-aos="fade-up">
+            What Events Are There in Evnt
+          </h5>
+          <div class="row justify-content-center">
+            <div
+              class="col-lg-4 col-12 mb-4"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div class="img-service text-center">
+                <img src="/images/icon-social.svg" />
+              </div>
+              <div class="title">
+                <h4 class="text-center py-3">Social Event</h4>
+              </div>
+              <div class="description">
+                <p class="text-center">
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry.
+                </p>
+              </div>
+            </div>
+            <div
+              class="col-lg-4 col-12 mb-4"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div class="img-service text-center">
+                <img src="/images/icon-ceremony.svg" />
+              </div>
+              <div class="title">
+                <h4 class="text-center py-3">Opening Ceremony</h4>
+              </div>
+              <div class="description">
+                <p class="text-center">
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry.
+                </p>
+              </div>
+            </div>
+            <div
+              class="col-lg-4 col-12"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
+              <div class="img-service text-center">
+                <img src="/images/icon-exhibition.svg" />
+              </div>
+              <div class="title">
+                <h4 class="text-center py-3">Exhibitions and Fairs</h4>
+              </div>
+              <div class="description">
+                <p class="text-center">
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-category">
+        <div class="container">
+          <h5>Browse By Categories</h5>
+          <div class="row justify-content-center">
+            <div
+              class="col-lg-4 col-12 category"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <a href="#">
+                <div class="card pl-2">
+                  <div class="card-body">
+                    <div class="content d-flex">
+                      <img
+                        src="images/icon-category-1.svg"
+                        class="pr-3"
+                        alt=""
+                      />
+                      <div class="desc">
+                        <h4>Food & Beverages</h4>
+                        <p class="">
+                          Lorem Ipsum is simply dummy text of the printing and
+                          industry.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div
+              class="col-lg-4 col-12 category"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <a href="#">
+                <div class="card pl-2">
+                  <div class="card-body">
+                    <div class="content d-flex">
+                      <img
+                        src="images/icon-category-2.svg"
+                        class="pr-3"
+                        alt=""
+                      />
+                      <div class="desc">
+                        <h4>Sports</h4>
+                        <p class="">
+                          Lorem Ipsum is simply dummy text of the printing and
+                          industry.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div
+              class="col-lg-4 col-12 category"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
+              <a href="#">
+                <div class="card pl-2">
+                  <div class="card-body">
+                    <div class="content d-flex">
+                      <img
+                        src="images/icon-category-3.svg"
+                        class="pr-3"
+                        alt=""
+                      />
+                      <div class="desc">
+                        <h4>Automotives</h4>
+                        <p class="">
+                          Lorem Ipsum is simply dummy text of the printing and
+                          industry.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div
+              class="col-lg-4 col-12 category"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
+              <a href="#">
+                <div class="card pl-2">
+                  <div class="card-body">
+                    <div class="content d-flex">
+                      <img
+                        src="images/icon-category-4.svg"
+                        class="pr-3"
+                        alt=""
+                      />
+                      <div class="desc">
+                        <h4>Japanese</h4>
+                        <p class="">
+                          Lorem Ipsum is simply dummy text of the printing and
+                          industry.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div
+              class="col-lg-4 col-12 category"
+              data-aos="fade-up"
+              data-aos-delay="500"
+            >
+              <a href="#">
+                <div class="card pl-2">
+                  <div class="card-body">
+                    <div class="content d-flex">
+                      <img
+                        src="images/icon-category-5.svg"
+                        class="pr-3"
+                        alt=""
+                      />
+                      <div class="desc">
+                        <h4>Electronics</h4>
+                        <p class="">
+                          Lorem Ipsum is simply dummy text of the printing and
+                          industry.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div
+              class="col-lg-4 col-12 category"
+              data-aos="fade-up"
+              data-aos-delay="600"
+            >
+              <a href="#">
+                <div class="card pl-2">
+                  <div class="card-body">
+                    <div class="content d-flex">
+                      <img
+                        src="images/icon-category-6.svg"
+                        class="pr-3"
+                        alt=""
+                      />
+                      <div class="desc">
+                        <h4>Music</h4>
+                        <p class="">
+                          Lorem Ipsum is simply dummy text of the printing and
+                          industry.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-upcomingEvent">
+        <div class="container">
+          <h5>Upcoming Events</h5>
+          <div class="row justify-content-center">
+            <div
+              class="col-lg-4 col-md-6 col-12 upcoming-event"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <a href="#">
+                <div class="card">
+                  <img
+                    class="card-img-top"
+                    src="images/1.jpg"
+                    alt="Card image cap"
+                  />
+                  <div class="card-body">
+                    <div class="d-flex">
+                      <div class="date pr-4 align-self-center">
+                        <div class="month">OKT</div>
+                        <div class="date">20</div>
+                      </div>
+                      <div class="desc">
+                        <div class="title-event">Indonesia Food Diary</div>
+                        <div class="location-event">
+                          Jakarta Barat, Indonesia
+                        </div>
+                        <div class="price-event">Rp200.000</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div
+              class="col-lg-4 col-md-6 col-12 upcoming-event"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <a href="#">
+                <div class="card">
+                  <img
+                    class="card-img-top"
+                    src="images/2.jpg"
+                    alt="Card image cap"
+                  />
+                  <div class="card-body">
+                    <div class="d-flex">
+                      <div class="date pr-4 align-self-center">
+                        <div class="month">OKT</div>
+                        <div class="date">20</div>
+                      </div>
+                      <div class="desc">
+                        <div class="title-event">DWS x Budi Doremi</div>
+                        <div class="location-event">
+                          Jakarta Barat, Indonesia
+                        </div>
+                        <div class="price-event">Rp200.000</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div
+              class="col-lg-4 col-md-6 col-12 upcoming-event"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
+              <a href="#">
+                <div class="card">
+                  <img
+                    class="card-img-top"
+                    src="images/3.jpg"
+                    alt="Card image cap"
+                  />
+                  <div class="card-body">
+                    <div class="d-flex">
+                      <div class="date pr-4 align-self-center">
+                        <div class="month">OKT</div>
+                        <div class="date">20</div>
+                      </div>
+                      <div class="desc">
+                        <div class="title-event">Allbase Jange Reonian</div>
+                        <div class="location-event">
+                          Jakarta Barat, Indonesia
+                        </div>
+                        <div class="price-event">Rp200.000</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div
+              class="col-lg-4 col-md-6 col-12 upcoming-event"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
+              <a href="#">
+                <div class="card">
+                  <img
+                    class="card-img-top"
+                    src="images/4.jpg"
+                    alt="Card image cap"
+                  />
+                  <div class="card-body">
+                    <div class="d-flex">
+                      <div class="date pr-4 align-self-center">
+                        <div class="month">OKT</div>
+                        <div class="date">20</div>
+                      </div>
+                      <div class="desc">
+                        <div class="title-event">Street Meal In The Dark</div>
+                        <div class="location-event">
+                          Jakarta Barat, Indonesia
+                        </div>
+                        <div class="price-event">Rp200.000</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div
+              class="col-lg-4 col-md-6 col-12 upcoming-event"
+              data-aos="fade-up"
+              data-aos-delay="500"
+            >
+              <a href="#">
+                <div class="card">
+                  <img
+                    class="card-img-top"
+                    src="images/5.jpg"
+                    alt="Card image cap"
+                  />
+                  <div class="card-body">
+                    <div class="d-flex">
+                      <div class="date pr-4 align-self-center">
+                        <div class="month">OKT</div>
+                        <div class="date">20</div>
+                      </div>
+                      <div class="desc">
+                        <div class="title-event">Seafood Diary</div>
+                        <div class="location-event">
+                          Jakarta Barat, Indonesia
+                        </div>
+                        <div class="price-event">Rp200.000</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div
+              class="col-lg-4 col-md-6 col-12 upcoming-event"
+              data-aos="fade-up"
+              data-aos-delay="600"
+            >
+              <a href="#">
+                <div class="card">
+                  <img
+                    class="card-img-top"
+                    src="images/6.jpg"
+                    alt="Card image cap"
+                  />
+                  <div class="card-body">
+                    <div class="d-flex">
+                      <div class="date pr-4 align-self-center">
+                        <div class="month">OKT</div>
+                        <div class="date">20</div>
+                      </div>
+                      <div class="desc">
+                        <div class="title-event">Musical Dramatic</div>
+                        <div class="location-event">
+                          Jakarta Barat, Indonesia
+                        </div>
+                        <div class="price-event">Rp200.000</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="btn btn-seemore text-center mt-5 px-4">Load More</div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <div class="container">
+        <hr />
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <div class="row">
+              <div class="col-12 col-lg-3 align-self-center name-footer">
+                <a href="#" class="logo-event">Evnt</a>
+              </div>
+              <div class="col-12 col-lg-3 name-footer">
+                <h4 class="mb-3">Event</h4>
+                <ul class="list-unstyled">
+                  <li>
+                    <a href=""> Join Us </a>
+                  </li>
+                  <li>
+                    <a href=""> Category </a>
+                  </li>
+                  <li>
+                    <a href=""> Features </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-12 col-lg-3 name-footer">
+                <h4 class="mb-3">Support</h4>
+                <ul class="list-unstyled">
+                  <li>
+                    <a href=""> Check Ticket </a>
+                  </li>
+                  <li>
+                    <a href=""> How to buy tickets </a>
+                  </li>
+                  <li>
+                    <a href=""> Become an owner </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-12 col-lg-3 name-footer">
+                <h4 class="mb-3">Contact Us</h4>
+                <ul class="list-unstyled">
+                  <li>
+                    <a href=""> +62 878-8349-6655 </a>
+                  </li>
+                  <li>
+                    <a href=""> event@gmail.com </a>
+                  </li>
+                  <li>
+                    <a href=""> Jakarta Barat, Indonesia </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 text-center">
+          <div class="line"></div>
+          <p>Copyright © 2021 evnt.my.id. All rights reversed</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="scripts/main.js"></script>
+  </body>
+</html>

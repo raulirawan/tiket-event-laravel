@@ -1,0 +1,31 @@
+.page-success {
+  .row-success {
+    min-height: 75vh;
+  }
+
+  .img-success {
+    img {
+      max-width: 50%;
+    }
+  }
+
+  .btn-home-page {
+    color: #fff;
+    @include button-variant(#7848f4, transparent);
+    padding: 8px 70px 8px 70px;
+  }
+
+  h2 {
+    font-family: "Euclid Medium";
+    font-size: 25px;
+    color: #0c0435;
+  }
+
+  .message {
+    p {
+      font-family: "Euclid Light";
+      font-size: 14px;
+      color: #0c0435;
+    }
+  }
+}

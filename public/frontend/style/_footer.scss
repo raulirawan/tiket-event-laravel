@@ -1,0 +1,52 @@
+footer {
+  background: #0c0435;
+  padding-top: 70px;
+  padding-bottom: 40px;
+
+  .logo-event {
+    font-family: "Euclid Bold";
+    font-size: 50px;
+    color: #fff;
+  }
+  h4 {
+    font-family: "Euclid Bold";
+    font-size: 20px;
+    color: #fff;
+  }
+  a {
+    font-family: "Euclid Light";
+    font-size: 20px;
+    color: #c9c9c9;
+  }
+
+  .name-footer {
+    margin-bottom: 20px;
+    a {
+      &:hover {
+        text-decoration: none;
+        color: #fff;
+      }
+    }
+    li {
+      margin-bottom: 10px;
+
+      a {
+        &:hover {
+          text-decoration: none;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  p {
+    padding-top: 40px;
+    font-family: "Euclid Light";
+    font-size: 20px;
+    color: #c9c9c9;
+  }
+
+  .line {
+    border: 1px solid #707070;
+  }
+}

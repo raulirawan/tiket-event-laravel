@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="78" height="78" viewBox="0 0 78 78">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_10" data-name="Rectangle 10" width="78" height="78" transform="translate(179 1638)" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="Mask_Group_7" data-name="Mask Group 7" transform="translate(-179 -1638)" clip-path="url(#clip-path)">
+    <g id="automotive" transform="translate(178.997 1637.994)">
+      <path id="Path_232" data-name="Path 232" d="M60.645,27.32,11.408,76.558a4.946,4.946,0,0,1-6.995,0L3.029,75.174,35.175,40.063,55.764,22.439Z" fill="#ffd321"/>
+      <path id="Path_233" data-name="Path 233" d="M55.764,22.439,3.029,75.174,1.644,73.789a4.953,4.953,0,0,1,0-6.995L50.882,17.557Z" fill="#ffea98"/>
+      <path id="Path_234" data-name="Path 234" d="M77.679,61.931,72.921,66.69,61.516,55.284l-3.29,3.29L38.333,41.246,19.627,19.977l3.234-3.232L11.454,5.337,16.214.579l9.47,2.707,10.6,10.464L34.1,24.631,53.571,44.1l10.874-2.174L74.972,52.452Z" fill="#b8b8bd"/>
+      <path id="Path_235" data-name="Path 235" d="M66.4,73.213l-4.759,4.759-9.479-2.707L41.632,64.734l2.174-10.872L24.34,34.4,13.475,36.568,2.883,26.105.173,16.62l4.759-4.759L16.336,23.267l3.29-3.29,38.6,38.6-3.232,3.232Z" fill="#d1d1d6"/>
+      <path id="Path_236" data-name="Path 236" d="M77.834,30.423l-9.765,9.765L53.043,25.16,57.5,16.526l8.57-4.392L70.7,16.769v6.524Z" fill="#2d2d2d"/>
+      <path id="Path_237" data-name="Path 237" d="M44.272,4H62.691V21.157H44.272Z" transform="translate(6.771 41.507) rotate(-45)" fill="#4b5055"/>
+    </g>
+  </g>
+</svg>
